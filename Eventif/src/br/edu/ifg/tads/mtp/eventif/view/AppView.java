@@ -1,0 +1,77 @@
+package br.edu.ifg.tads.mtp.eventif.view;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class AppView extends JFrame{
+	private JPanel painelSuperior;
+	private JPanel painelEsquerda;
+	private JPanel painelDireita;
+	private JPanel principal;
+	private JLabel logo;
+	private ImageIcon icon;
+	
+	public JPanel getPainelSuperior() {
+		return painelSuperior;
+	}
+
+	public void setPainelSuperior(JPanel painelSuperior) {
+		this.painelSuperior = painelSuperior;
+	}
+
+	public JPanel getPainelEsquerda() {
+		return painelEsquerda;
+	}
+
+	public void setPainelEsquerda(JPanel painelEsquerda) {
+		this.painelEsquerda = painelEsquerda;
+	}
+
+	public JPanel getPainelDireita() {
+		return painelDireita;
+	}
+
+	public void setPainelDireita(JPanel painelDireita) {
+		this.painelDireita = painelDireita;
+	}
+	
+	public AppView(){
+		super("EventIF - Desk'top'");
+		principal=new JPanel();
+		principal.setLayout(null);
+		principal.setSize(1000, 700);
+		principal.setBackground(new Color(0,0,0));
+		icon = new ImageIcon(getClass().getResource("/Logo.png"));
+		
+		logo = new JLabel(icon);
+		painelSuperior = new JPanel();
+		painelEsquerda = new JPanel();
+		painelDireita = new JPanel();
+		painelSuperior.setLayout(null);
+		painelEsquerda.setLayout(null);
+		painelDireita.setLayout(null);
+		
+		logo.setBounds(5, 0, 220, 75);
+		painelSuperior.setBounds(221, 0, 779, 75);
+		painelEsquerda.setBounds(0, 0, 220, 700);
+		painelDireita.setBounds(221, 76, 779, 624);
+		painelDireita.setBackground(new Color(171, 171, 171));
+		//painelSuperior.setBackground(new Color(165, 170, 163));
+		painelSuperior.setBackground(new Color(66, 105, 51));
+		painelEsquerda.setBackground(new Color(66, 105, 51));
+		
+		painelEsquerda.add(logo);
+		principal.add(painelSuperior);
+		principal.add(painelEsquerda);
+		principal.add(painelDireita);
+		this.setResizable(false);
+		this.setLayout(null);
+		this.setSize(1000, 700);
+		this.add(principal);
+	}
+}
