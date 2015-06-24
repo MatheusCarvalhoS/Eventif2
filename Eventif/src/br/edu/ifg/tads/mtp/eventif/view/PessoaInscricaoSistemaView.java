@@ -2,11 +2,12 @@ package br.edu.ifg.tads.mtp.eventif.view;
 
 import java.awt.Color;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PessoaInscricaoSistema {
+public class PessoaInscricaoSistemaView {
 	private JPanel painel;
 
 	private JLabel nome;
@@ -26,8 +27,10 @@ public class PessoaInscricaoSistema {
 	private JTextField txCep;
 	private JTextField txNumero;
 	private JTextField txUf;
+	
+	private JButton btInscrever;
 
-	public JPanel getAlunoInscricaoSistema() {
+	public JPanel getPessoaInscricaoSistemaView() {
 		painel = new JPanel();
 		painel.setBounds(0, 0, 779, 624);
 		painel.setLayout(null);
@@ -51,6 +54,8 @@ public class PessoaInscricaoSistema {
 		txCep = new JTextField();
 		txNumero = new JTextField();
 		txUf = new JTextField();
+		
+		btInscrever = new JButton("Inscrever");
 
 		// setando posições das Labels
 		nome.setBounds(20, 10, 100, 25);
@@ -71,6 +76,7 @@ public class PessoaInscricaoSistema {
 		txBairro.setBounds(75, 115, 100, 25);
 		txNumero.setBounds(270, 115, 100, 25);
 		txUf.setBounds(75, 150, 100, 25);
+		btInscrever.setBounds(570, 540, 150, 25);
 
 		// adicionando ao painel
 		painel.add(nome);
@@ -90,6 +96,7 @@ public class PessoaInscricaoSistema {
 		painel.add(txCep);
 		painel.add(txNumero);
 		painel.add(txUf);
+		painel.add(btInscrever);
 
 		painel.setBackground(new Color(240, 240, 240));
 		return painel;
@@ -231,4 +238,11 @@ public class PessoaInscricaoSistema {
 		this.txUf = txUf;
 	}
 
+	public JButton getBtInscrever() {
+		return btInscrever;
+	}
+
+	public void setBtInscrever(JButton btInscrever) {
+		this.btInscrever = btInscrever;
+	}
 }

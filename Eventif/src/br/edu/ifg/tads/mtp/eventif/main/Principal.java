@@ -14,7 +14,7 @@ import br.edu.ifg.tads.mtp.eventif.view.GerenteCriarEventoView;
 import br.edu.ifg.tads.mtp.eventif.view.GerenteListarEventoView;
 import br.edu.ifg.tads.mtp.eventif.view.LoginView;
 import br.edu.ifg.tads.mtp.eventif.view.MenuPrincipalView;
-import br.edu.ifg.tads.mtp.eventif.view.PessoaInscricaoSistema;
+import br.edu.ifg.tads.mtp.eventif.view.PessoaInscricaoSistemaView;
 import br.edu.ifg.tads.mtp.eventif.control.*;
 
 public class Principal {
@@ -23,9 +23,9 @@ public class Principal {
 		ConnectionFactory con = new ConnectionFactory();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setLayout(null);
-		app.getPainelDireita().add(new GerenteCriarEventoControl().getGerenteCriarEventoControl());
-		app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl());
+		app.getPainelDireita().add(new LoginControl().getLoginControl());
+		app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl(app));
 		app.setVisible(true);
-		con.getConnection();
+		//con.getConnection();
 	}
 }

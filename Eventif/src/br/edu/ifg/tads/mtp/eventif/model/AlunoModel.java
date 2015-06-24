@@ -23,7 +23,5 @@ public class AlunoModel extends PessoaModel{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
 }
 

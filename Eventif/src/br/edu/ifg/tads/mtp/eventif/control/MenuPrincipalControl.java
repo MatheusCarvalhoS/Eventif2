@@ -1,18 +1,23 @@
 package br.edu.ifg.tads.mtp.eventif.control;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.edu.ifg.tads.mtp.eventif.view.AppView;
 import br.edu.ifg.tads.mtp.eventif.view.MenuPrincipalView;
 
 public class MenuPrincipalControl {
 	private MenuPrincipalView menu;
 	private JPanel painel;
+	private AppView appView;
 	
-	public JPanel getMenuPrincipalControl(){
+	public JPanel getMenuPrincipalControl(AppView app){
+		this.appView=app;
 		menu = new MenuPrincipalView();
 		painel = menu.getMenuPrincipal();
 	
@@ -20,7 +25,10 @@ public class MenuPrincipalControl {
 		menu.getBtInscricao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Cliquei em Inscrever");
+				appView.getPainelDireita().removeAll();
+				appView.getPainelDireita().add(new PessoaInscricaoSistemaControl().getPessoaInscricaoSistemaControl());
+				appView.getPainelDireita().repaint();
+				//JOptionPane.showMessageDialog(null, "Cliquei em Inscrever");
 			}
 		});
 		
@@ -28,11 +36,11 @@ public class MenuPrincipalControl {
 		menu.getBtLogin().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Cliquei em Login");
+				appView.getPainelDireita().removeAll();
+				appView.getPainelDireita().add(new LoginControl().getLoginControl());
+				appView.getPainelDireita().repaint();
 			}
 		});
-		
-		
 		return painel;
 	}
 

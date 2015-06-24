@@ -12,67 +12,54 @@ import javax.swing.table.DefaultTableModel;
 import br.edu.ifg.tads.mtp.eventif.control.GVizualizarEventoControl;
 import br.edu.ifg.tads.mtp.eventif.model.EventoModel;
 
-public class GerenteListarEventoView extends JPanel{
-	
+public class GerenteListarEventoView{
+	private JPanel painel;
 	private JTextField jtfPesquisar;
 	private JTable table;
 	private JButton jbtnPesquisar;
-	private JButton jbtnNovoContato;
-
+	private JButton jbtnNovoEvento;
 	/**
 	 * Create the frame.
 	 */
-	public JPanel getPainelVisualizarEvento() {
-		this.setSize(780, 625);
-		this.setBackground(Color.WHITE);
-		this.setLayout(null);
-		
-		JLabel lblPesquisarPorNome = new JLabel("Pesquisar por nome");
-		lblPesquisarPorNome.setForeground(new Color(0, 0, 128));
-		lblPesquisarPorNome.setFont(new Font("HanziPen TC", Font.BOLD, 15));
-		lblPesquisarPorNome.setBounds(16, 98, 124, 16);
-		this.add(lblPesquisarPorNome);
+	public JPanel getGerenteListarEventoView() {
+		painel = new JPanel();
+		painel.setBounds(0, 0, 779, 624);
+		painel.setLayout(null);
 		
 		jtfPesquisar = new JTextField();
 		jtfPesquisar.setForeground(new Color(0, 0, 128));
-		jtfPesquisar.setFont(new Font("HanziPen TC", Font.BOLD, 15));
-		jtfPesquisar.setBounds(152, 92, 513, 28);
-		this.add(jtfPesquisar);
+		jtfPesquisar.setFont(new Font("HanziPen TC", Font.BOLD, 12));
+		jtfPesquisar.setBounds(20, 20, 500, 28);
 		jtfPesquisar.setColumns(10);
 		
 		jbtnPesquisar = new JButton("Pesquisar");
 		jbtnPesquisar.setForeground(new Color(0, 0, 128));
-		jbtnPesquisar.setFont(new Font("HanziPen TC", Font.BOLD, 15));
+		jbtnPesquisar.setFont(new Font("HanziPen TC", Font.BOLD, 12));
 		jbtnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		jbtnPesquisar.setBounds(677, 93, 117, 29);
-		this.add(jbtnPesquisar);
+		jbtnPesquisar.setBounds(530, 20, 117, 26);
 		
-		JLabel lblSistemaContatosV = new JLabel("SISTEMA CONTATOS V1.0");
-		lblSistemaContatosV.setForeground(new Color(0, 128, 128));
-		lblSistemaContatosV.setFont(new Font("HanziPen TC", Font.BOLD, 24));
-		lblSistemaContatosV.setBounds(263, 18, 357, 38);
-		this.add(lblSistemaContatosV);
-		
-		jbtnNovoContato = new JButton("Novo Contato");
-		jbtnNovoContato.setForeground(new Color(0, 0, 128));
-		jbtnNovoContato.setFont(new Font("HanziPen TC", Font.BOLD, 15));
-		jbtnNovoContato.setBounds(6, 501, 117, 29);
-		this.add(jbtnNovoContato);
-		
+		jbtnNovoEvento = new JButton("Novo Evento");
+		jbtnNovoEvento.setForeground(new Color(0, 0, 128));
+		jbtnNovoEvento.setFont(new Font("HanziPen TC", Font.BOLD, 12));
+		jbtnNovoEvento.setBounds(570, 540, 150, 25);
 		
 		table = new JTable ();
 		table.setFont(new Font("HanziPen TC", Font.BOLD, 15));
-		table.setBounds(16, 139, 778, 350);
+		table.setBounds(20, 60, 700, 500);
 		table.setBackground(UIManager.getColor("Button.background"));
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  
 		JScrollPane jScrollPane = new JScrollPane(table);
-		jScrollPane.setBounds(16, 139, 778, 350);
-		this.add(jScrollPane);
+		jScrollPane.setBounds(20, 60, 700, 450);
 		
-		return this;
+		painel.add(jScrollPane);
+		painel.add(jtfPesquisar);
+		painel.add(jbtnPesquisar);
+		painel.add(jbtnNovoEvento);
+		//painel.setBackground(new Color(240, 240, 240));
+		return painel;
 	}
 
 	public JTextField getJtfPesquisar() {
@@ -100,10 +87,10 @@ public class GerenteListarEventoView extends JPanel{
 	}
 
 	public JButton getJbtnNovoContato() {
-		return jbtnNovoContato;
+		return jbtnNovoEvento;
 	}
 
 	public void setJbtnNovoContato(JButton jbtnNovoContato) {
-		this.jbtnNovoContato = jbtnNovoContato;
+		this.jbtnNovoEvento = jbtnNovoContato;
 	}
 }
