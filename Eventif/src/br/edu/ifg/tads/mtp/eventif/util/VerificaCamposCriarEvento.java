@@ -3,7 +3,7 @@ package br.edu.ifg.tads.mtp.eventif.util;
 import br.edu.ifg.tads.mtp.eventif.view.GerenteCriarEventoView;
 
 public class VerificaCamposCriarEvento {
-	public boolean verify(GerenteCriarEventoView eventoView){
+	public boolean getVerificaCamposCriarEvento(GerenteCriarEventoView eventoView){
 		boolean verify=true;
 		if(eventoView.getTxNome().getText().isEmpty()){
 			verify=false;

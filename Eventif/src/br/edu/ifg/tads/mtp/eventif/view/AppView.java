@@ -57,15 +57,16 @@ public class AppView extends JFrame{
 		painelDireita.setLayout(null);
 		
 		logo.setBounds(5, 0, 220, 75);
-		painelSuperior.setBounds(221, 0, 779, 75);
-		painelEsquerda.setBounds(0, 0, 220, 700);
+		painelSuperior.setBounds(0, 0, 1000, 75);
+		painelEsquerda.setBounds(0, 76, 220, 624);
 		painelDireita.setBounds(221, 76, 779, 624);
 		painelDireita.setBackground(new Color(171, 171, 171));
 		//painelSuperior.setBackground(new Color(165, 170, 163));
 		painelSuperior.setBackground(new Color(66, 105, 51));
 		painelEsquerda.setBackground(new Color(66, 105, 51));
 		
-		painelEsquerda.add(logo);
+		painelSuperior.add(logo);
+		
 		principal.add(painelSuperior);
 		principal.add(painelEsquerda);
 		principal.add(painelDireita);

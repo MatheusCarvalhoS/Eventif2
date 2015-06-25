@@ -12,7 +12,7 @@ public class MenuPrincipalView {
 	
 	public JPanel getMenuPrincipal(){
 		painelEsquerda = new JPanel();
-		painelEsquerda.setBounds(0, 0, 220, 700);
+		painelEsquerda.setBounds(0, 0, 220, 624);
 		painelEsquerda.setLayout(null);
 		painelEsquerda.setBackground(new Color(66, 105, 51));
 		

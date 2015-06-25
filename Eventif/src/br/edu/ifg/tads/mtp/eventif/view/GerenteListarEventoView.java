@@ -17,7 +17,6 @@ public class GerenteListarEventoView{
 	private JTextField jtfPesquisar;
 	private JTable table;
 	private JButton jbtnPesquisar;
-	private JButton jbtnNovoEvento;
 	/**
 	 * Create the frame.
 	 */
@@ -41,11 +40,6 @@ public class GerenteListarEventoView{
 		});
 		jbtnPesquisar.setBounds(530, 20, 117, 26);
 		
-		jbtnNovoEvento = new JButton("Novo Evento");
-		jbtnNovoEvento.setForeground(new Color(0, 0, 128));
-		jbtnNovoEvento.setFont(new Font("HanziPen TC", Font.BOLD, 12));
-		jbtnNovoEvento.setBounds(570, 540, 150, 25);
-		
 		table = new JTable ();
 		table.setFont(new Font("HanziPen TC", Font.BOLD, 15));
 		table.setBounds(20, 60, 700, 500);
@@ -57,7 +51,6 @@ public class GerenteListarEventoView{
 		painel.add(jScrollPane);
 		painel.add(jtfPesquisar);
 		painel.add(jbtnPesquisar);
-		painel.add(jbtnNovoEvento);
 		//painel.setBackground(new Color(240, 240, 240));
 		return painel;
 	}
@@ -84,13 +77,5 @@ public class GerenteListarEventoView{
 
 	public void setJbtnPesquisar(JButton jbtnPesquisar) {
 		this.jbtnPesquisar = jbtnPesquisar;
-	}
-
-	public JButton getJbtnNovoContato() {
-		return jbtnNovoEvento;
-	}
-
-	public void setJbtnNovoContato(JButton jbtnNovoContato) {
-		this.jbtnNovoEvento = jbtnNovoContato;
 	}
 }

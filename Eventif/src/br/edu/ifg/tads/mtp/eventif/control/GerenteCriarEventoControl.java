@@ -29,7 +29,7 @@ public class GerenteCriarEventoControl {
 			public void actionPerformed(ActionEvent arg0) {
 				EnderecoModel endereco = new EnderecoModel();
 				EventoModel evento = new EventoModel();
-				if(new VerificaCamposCriarEvento().verify(criarEvento)){
+				if(new VerificaCamposCriarEvento().getVerificaCamposCriarEvento(criarEvento)){
 					JOptionPane.showMessageDialog(null, "Evento criado");
 				}else{
 					JOptionPane.showMessageDialog(null, "Verifique o preenchimento dos campos");

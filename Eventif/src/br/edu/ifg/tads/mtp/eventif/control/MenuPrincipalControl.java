@@ -37,7 +37,7 @@ public class MenuPrincipalControl {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				appView.getPainelDireita().removeAll();
-				appView.getPainelDireita().add(new LoginControl().getLoginControl());
+				appView.getPainelDireita().add(new LoginControl().getLoginControl(appView));
 				appView.getPainelDireita().repaint();
 			}
 		});
