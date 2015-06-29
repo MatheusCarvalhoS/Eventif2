@@ -12,6 +12,23 @@ public class EventoModel {
 	private String telefone;
 	private String local;
 	private int idEndereco;
+	private String descricao;
+
+	public int getIdEvento() {
+		return idEvento;
+	}
+
+	public void setIdEvento(int idEvento) {
+		this.idEvento = idEvento;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	public Calendar getDataInicio() {
 		return dataInicio;

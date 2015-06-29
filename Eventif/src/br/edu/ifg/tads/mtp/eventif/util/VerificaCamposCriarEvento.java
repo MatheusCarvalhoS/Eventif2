@@ -21,8 +21,6 @@ public class VerificaCamposCriarEvento {
 			verify=false;
 		}else if(eventoView.getTxCep().getText().isEmpty()){
 			verify=false;
-		}else if(eventoView.getTxComplemento().getText().isEmpty()){
-			verify=false;
 		}else if(eventoView.getTxNumero().getText().isEmpty()){
 			verify=false;
 		}else if(eventoView.getTxUf().getText().isEmpty()){

@@ -21,7 +21,6 @@ public class GerenteCriarEventoView {
 	private JLabel email;
 	private JLabel local;
 	private JLabel cep;
-	private JLabel complemento;
 	private JLabel numero;
 	private JLabel bairro;
 	private JLabel cidade;
@@ -36,7 +35,6 @@ public class GerenteCriarEventoView {
 	private JTextField txEmail;
 	private JTextField txLocal;
 	private JTextField txCep;
-	private JTextField txComplemento;
 	private JTextField txNumero;
 	private JTextField txBairro;
 	private JTextField txCidade;
@@ -57,7 +55,6 @@ public class GerenteCriarEventoView {
 		email = new JLabel("Email:");
 		local = new JLabel("Local:");
 		cep = new JLabel("Cep:");
-		complemento = new JLabel("Endereco:");
 		numero = new JLabel("Numero:");
 		bairro = new JLabel("Bairro:");
 		cidade = new JLabel("Cidade:");
@@ -72,7 +69,6 @@ public class GerenteCriarEventoView {
 		txEmail = new JTextField();
 		txLocal = new JTextField();
 		txCep = new JTextField();
-		txComplemento = new JTextField();
 		txNumero = new JTextField();
 	    txBairro = new JTextField();
 		txCidade = new JTextField();
@@ -91,7 +87,6 @@ public class GerenteCriarEventoView {
 		email.setBounds(150, 160, 100, 25);
 		local.setBounds(20, 210, 100, 25);
 		cep.setBounds(330, 210, 100, 25);
-		complemento.setBounds(20, 255, 100, 25);
 		numero.setBounds(20, 300, 100, 25);
 		uf.setBounds(110, 300, 80, 25);
 		bairro.setBounds(20, 345, 100, 25);
@@ -107,7 +102,6 @@ public class GerenteCriarEventoView {
 		txEmail.setBounds(150, 180, 300, 25);
 		txLocal.setBounds(20, 230, 300, 25);
 		txCep.setBounds(330, 230, 120, 25);
-		txComplemento.setBounds(20, 275, 430, 25);
 		txNumero.setBounds(20, 320, 80, 25);
 		txUf.setBounds(110, 320, 80, 25);
 		txBairro.setBounds(20, 365, 310, 25);
@@ -123,7 +117,6 @@ public class GerenteCriarEventoView {
 		painel.add(email);
 		painel.add(local);
 		painel.add(cep);
-		painel.add(complemento);
 		painel.add(numero);
 		painel.add(bairro);
 		painel.add(cidade);
@@ -139,7 +132,6 @@ public class GerenteCriarEventoView {
 		painel.add(txLocal);
 		painel.add(txCep);
 		painel.add(txTelefone);
-		painel.add(txComplemento);
 		painel.add(txNumero);
 		painel.add(txBairro);
 		painel.add(txCidade);
@@ -228,14 +220,6 @@ public class GerenteCriarEventoView {
 
 	public void setCep(JLabel cep) {
 		this.cep = cep;
-	}
-
-	public JLabel getEndereco() {
-		return complemento;
-	}
-
-	public void setEndereco(JLabel endereco) {
-		this.complemento = endereco;
 	}
 
 	public JLabel getNumero() {
@@ -340,14 +324,6 @@ public class GerenteCriarEventoView {
 
 	public void setTxCep(JTextField txCep) {
 		this.txCep = txCep;
-	}
-
-	public JTextField getTxComplemento() {
-		return txComplemento;
-	}
-
-	public void setTxComplemento(JTextField txEndereco) {
-		this.txComplemento = txEndereco;
 	}
 
 	public JTextField getTxNumero() {

@@ -2,10 +2,17 @@ package br.edu.ifg.tads.mtp.eventif.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.edu.ifg.tads.mtp.eventif.dao.AlunoDao;
+import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDao;
+import br.edu.ifg.tads.mtp.eventif.dao.EventoDAO;
+import br.edu.ifg.tads.mtp.eventif.dao.PessoaDao;
+import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EventoModel;
 import br.edu.ifg.tads.mtp.eventif.util.VerificaCamposCriarEvento;
@@ -14,25 +21,60 @@ import br.edu.ifg.tads.mtp.eventif.view.GerenteCriarEventoView;
 public class GerenteCriarEventoControl {
 	private GerenteCriarEventoView criarEvento;
 	private JPanel painel;
-	
-	public JPanel getGerenteCriarEventoControl(){
-		criarEvento=new GerenteCriarEventoView();
-		painel=criarEvento.getGerenteCriarEventoView();
+
+	public JPanel getGerenteCriarEventoControl() {
+		criarEvento = new GerenteCriarEventoView();
+		painel = criarEvento.getGerenteCriarEventoView();
 		adicionaEventos();
 		return painel;
 	}
-	
-	public void adicionaEventos(){
+
+	public void adicionaEventos() {
 		criarEvento.getBtCriar().addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				EnderecoModel endereco = new EnderecoModel();
-				EventoModel evento = new EventoModel();
-				if(new VerificaCamposCriarEvento().getVerificaCamposCriarEvento(criarEvento)){
+				if (new VerificaCamposCriarEvento()
+						.getVerificaCamposCriarEvento(criarEvento)) {
+					EnderecoModel endereco = new EnderecoModel();
+					endereco.setCep(criarEvento.getTxCep().getText());
+					endereco.setUf(criarEvento.getTxUf().getText());
+					endereco.setCidade(criarEvento.getTxCidade().getText());
+					endereco.setBairro(criarEvento.getTxBairro().getText());
+					endereco.setNumero(criarEvento.getTxNumero().getText());
+
+					EventoModel evento = new EventoModel();
+					evento.setNome(criarEvento.getTxNome().getText());
+
+					Calendar dataInicio = Calendar.getInstance();
+					dataInicio.setTime(new Date(criarEvento.getTxDataInicio()
+							.getText()));
+
+					evento.setDataInicio(dataInicio);
+					
+					Calendar dataFim = Calendar.getInstance();
+					dataFim.setTime(new Date(criarEvento
+							.getTxDataEncerramento().getText()));
+
+					evento.setDataFim(dataFim);
+					
+					evento.setOrganizador(criarEvento.getTxOrganizador().getText());
+					evento.setTelefone(criarEvento.getTxTelefone().getText());
+					evento.setLocal(criarEvento.getTxLocal().getText());
+					evento.setDescricao(criarEvento.getTxDescricao().getText());
+
+					
+					if(new EnderecoDao().adiconaEndereco(endereco)){
+						evento.setIdEndereco(new EnderecoDao().retornaMaxIdEndereco());
+						if(new EventoDAO().adicionaEvento(evento)){
+							JOptionPane.showMessageDialog(null, "Evento Criado com sucesso! ");				
+						}
+					}
+					
 					JOptionPane.showMessageDialog(null, "Evento criado");
-				}else{
-					JOptionPane.showMessageDialog(null, "Verifique o preenchimento dos campos");
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"Verifique o preenchimento dos campos");
 				}
 			}
 		});
