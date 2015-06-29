@@ -2,7 +2,7 @@ package br.edu.ifg.tads.mtp.eventif.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import br.edu.ifg.tads.mtp.eventif.util.VerificaCamposCriarLogin;
+import br.edu.ifg.tads.mtp.eventif.util.VerificaCamposLogin;
 import br.edu.ifg.tads.mtp.eventif.view.AppView;
 import br.edu.ifg.tads.mtp.eventif.view.LoginView;
 
@@ -19,12 +19,12 @@ public class LoginControl {
 		login=new LoginView();
 		painel=login.getPainelLogin();
 		
-		// evento no botão OK que não faz nada 
-		login.getBtnOk().addActionListener(new ActionListener() {
+		//Evento no botão OK que não faz nada 
+		login.getBtnOk().addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String text = (String) login.getCombo().getSelectedItem();
-				if(new VerificaCamposCriarLogin().getVerificaCamposCriarLogin(login)){
+				if(new VerificaCamposLogin().getVerificaCamposCriarLogin(login)){
 					if(text.equals("Gerente")){
 						appView.getPainelEsquerda().removeAll();
 						appView.getPainelEsquerda().add(new MenuPrincipalGerenteControl().getMenuPrincipalGerente(appView));
@@ -32,12 +32,12 @@ public class LoginControl {
 						appView.getPainelDireita().removeAll();
 						appView.getPainelDireita().add(new GerenteListarEventoControl().getGerenteListarEventoControl());
 						appView.getPainelDireita().repaint();
-					}else if(text.equals("Monitor")){
+					}else if(text.equals("Monitor (a)")){
 						
 					}
 				}else{
 					JOptionPane.showMessageDialog(null, "Verifique os preenchimentos dos Campos.");
-					login.getTfLogin().setText("");
+					login.getTfCpf().setText("");
 					login.getTfSenha().setText("");
 				}
 				

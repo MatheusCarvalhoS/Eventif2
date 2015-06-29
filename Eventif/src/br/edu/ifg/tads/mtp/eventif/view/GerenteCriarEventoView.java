@@ -80,7 +80,8 @@ public class GerenteCriarEventoView {
 		btCriar = new JButton("Criar");
 		
 		//Setando posições e tamanhos
-
+		
+		//Labels
 		nome.setBounds(20, 5, 100, 25);
 		descricao.setBounds(340, 5, 100, 25);
 		dataInicio.setBounds(20, 60, 120, 25);
@@ -96,6 +97,7 @@ public class GerenteCriarEventoView {
 		bairro.setBounds(20, 345, 100, 25);
 		cidade.setBounds(20, 390, 100, 25);
 		
+		//TextFields
 		txNome.setBounds(20, 25, 300, 25);
 		txDescricao.setBounds(340, 25, 400, 130);
 		txDataInicio.setBounds(20, 80, 145, 25);
@@ -110,7 +112,7 @@ public class GerenteCriarEventoView {
 		txUf.setBounds(110, 320, 80, 25);
 		txBairro.setBounds(20, 365, 310, 25);
 		txCidade.setBounds(20, 410, 310, 25);
-		btCriar.setBounds(20, 450, 100, 25);
+		btCriar.setBounds(570, 540, 150, 25);
 		
 		painel.add(nome);
 		painel.add(descricao);

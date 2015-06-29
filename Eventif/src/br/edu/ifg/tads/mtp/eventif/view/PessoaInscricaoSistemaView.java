@@ -3,8 +3,10 @@ package br.edu.ifg.tads.mtp.eventif.view;
 import java.awt.Color;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class PessoaInscricaoSistemaView {
@@ -13,21 +15,25 @@ public class PessoaInscricaoSistemaView {
 	private JLabel nome;
 	private JLabel cpf;
 	private JLabel rg;
+	private JLabel cep;
+	private JLabel uf;
 	private JLabel cidade;
 	private JLabel bairro;
-	private JLabel cep;
 	private JLabel numero;
-	private JLabel uf;
+	private JLabel complemento;
+	private JLabel senha;
 
 	private JTextField txNome;
 	private JTextField txCpf;
 	private JTextField txRg;
+	private JTextField txCep;
+	private JTextField txUf;
 	private JTextField txCidade;
 	private JTextField txBairro;
-	private JTextField txCep;
 	private JTextField txNumero;
-	private JTextField txUf;
-	
+	private JTextField txComplemento;
+	private JPasswordField txSenha;
+
 	private JButton btInscrever;
 
 	public JPanel getPessoaInscricaoSistemaView() {
@@ -39,139 +45,80 @@ public class PessoaInscricaoSistemaView {
 		nome = new JLabel("Nome:");
 		cpf = new JLabel("CPF:");
 		rg = new JLabel("RG:");
+		cep = new JLabel("CEP:");
+		uf = new JLabel("UF:");
 		cidade = new JLabel("Cidade:");
 		bairro = new JLabel("Bairro:");
-		cep = new JLabel("CEP:");
 		numero = new JLabel("Numero:");
-		uf = new JLabel("UF:");
-
+		complemento = new JLabel("Complemento:");
+		senha = new JLabel("Senha:");
+		
 		// Criando JTextFields
 		txNome = new JTextField();
 		txCpf = new JTextField();
 		txRg = new JTextField();
+		txCep = new JTextField();
+		txUf = new JTextField();
 		txCidade = new JTextField();
 		txBairro = new JTextField();
-		txCep = new JTextField();
 		txNumero = new JTextField();
-		txUf = new JTextField();
-		
+		txComplemento = new JTextField();
+		txSenha = new JPasswordField();
+	
 		btInscrever = new JButton("Inscrever");
 
 		// setando posições das Labels
-		nome.setBounds(20, 10, 100, 25);
-		cpf.setBounds(300, 10, 100, 25);
-		rg.setBounds(35, 45, 100, 25);
-		cep.setBounds(280, 45, 100, 25);
-		cidade.setBounds(10, 80, 100, 25);
-		bairro.setBounds(15, 115, 100, 25);
-		numero.setBounds(200, 115, 100, 25);
-		uf.setBounds(35, 150, 100, 25);
-
+		nome.setBounds(20, 5, 100, 25);
+		cpf.setBounds(20, 50, 120, 25);
+		rg.setBounds(175, 50, 120, 25);
+		cep.setBounds(20, 95, 100, 25);
+		uf.setBounds(130, 95, 100, 25);
+		cidade.setBounds(20, 140, 100, 25);
+		bairro.setBounds(20, 185, 100, 25);
+		numero.setBounds(20, 230, 100, 25);
+		complemento.setBounds(20, 275, 110, 25);
+		senha.setBounds(20, 320, 100, 25);
+		
 		// setando as posições das TextFields
-		txNome.setBounds(75, 10, 200, 25);
-		txCpf.setBounds(340, 10, 120, 25);
-		txRg.setBounds(75, 45, 150, 25);
-		txCep.setBounds(320, 45, 100, 25);
-		txCidade.setBounds(75, 80, 100, 25);
-		txBairro.setBounds(75, 115, 100, 25);
-		txNumero.setBounds(270, 115, 100, 25);
-		txUf.setBounds(75, 150, 100, 25);
+		txNome.setBounds(20, 25, 400, 25);
+		txCpf.setBounds(20, 70, 145, 25);
+		txRg.setBounds(175, 70, 145, 25);
+		txCep.setBounds(20, 115, 100, 25);
+		txUf.setBounds(130, 115, 100, 25);
+		txCidade.setBounds(20, 160, 300, 25);
+		txBairro.setBounds(20, 205, 300, 25);
+		txNumero.setBounds(20, 250, 100, 25);
+		txComplemento.setBounds(20, 296, 400, 25);
+		txSenha.setBounds(20, 340, 200, 25);
 		btInscrever.setBounds(570, 540, 150, 25);
 
 		// adicionando ao painel
 		painel.add(nome);
 		painel.add(cpf);
 		painel.add(rg);
+		painel.add(cep);
+		painel.add(uf);
 		painel.add(cidade);
 		painel.add(bairro);
-		painel.add(cep);
 		painel.add(numero);
-		painel.add(uf);
-
+		painel.add(complemento);
+		painel.add(senha);
+		
 		painel.add(txNome);
 		painel.add(txCpf);
 		painel.add(txRg);
+		painel.add(txCep);
+		painel.add(txUf);
 		painel.add(txCidade);
 		painel.add(txBairro);
-		painel.add(txCep);
 		painel.add(txNumero);
-		painel.add(txUf);
+		painel.add(txComplemento);
+		painel.add(txSenha);
+		
 		painel.add(btInscrever);
 
 		painel.setBackground(new Color(240, 240, 240));
 		return painel;
-	}
-
-	public JPanel getPanel() {
-		return painel;
-	}
-
-	public void setPanel(JPanel panel) {
-		this.painel = panel;
-	}
-
-	public JLabel getNome() {
-		return nome;
-	}
-
-	public void setNome(JLabel nome) {
-		this.nome = nome;
-	}
-
-	public JLabel getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(JLabel cpf) {
-		this.cpf = cpf;
-	}
-
-	public JLabel getRg() {
-		return rg;
-	}
-
-	public void setRg(JLabel rg) {
-		this.rg = rg;
-	}
-
-	public JLabel getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(JLabel cidade) {
-		this.cidade = cidade;
-	}
-
-	public JLabel getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(JLabel bairro) {
-		this.bairro = bairro;
-	}
-
-	public JLabel getCep() {
-		return cep;
-	}
-
-	public void setCep(JLabel cep) {
-		this.cep = cep;
-	}
-
-	public JLabel getNumero() {
-		return numero;
-	}
-
-	public void setNumero(JLabel numero) {
-		this.numero = numero;
-	}
-
-	public JLabel getUf() {
-		return uf;
-	}
-
-	public void setUf(JLabel uf) {
-		this.uf = uf;
 	}
 
 	public JTextField getTxNome() {
@@ -230,6 +177,14 @@ public class PessoaInscricaoSistemaView {
 		this.txNumero = txNumero;
 	}
 
+	public JTextField getTxComplemento() {
+		return txComplemento;
+	}
+
+	public void setTxComplemento(JTextField txComplemento) {
+		this.txComplemento = txComplemento;
+	}
+
 	public JTextField getTxUf() {
 		return txUf;
 	}
@@ -240,6 +195,14 @@ public class PessoaInscricaoSistemaView {
 
 	public JButton getBtInscrever() {
 		return btInscrever;
+	}
+	
+	public JTextField getTxSenha() {
+		return txSenha;
+	}
+
+	public void setTxSenha(JPasswordField txSenha) {
+		this.txSenha = txSenha;
 	}
 
 	public void setBtInscrever(JButton btInscrever) {

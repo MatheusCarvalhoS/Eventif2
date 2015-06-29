@@ -7,6 +7,7 @@ public class EnderecoModel {
 	private String cep;
 	private String cidade;
 	private String uf;
+	private String complemento;
 
 	public int getIdEndereco() {
 		return idEndereco;
@@ -54,6 +55,14 @@ public class EnderecoModel {
 
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 }

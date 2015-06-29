@@ -16,7 +16,7 @@ public class MenuPrincipalView {
 		painelEsquerda.setLayout(null);
 		painelEsquerda.setBackground(new Color(66, 105, 51));
 		
-		btInscricao = new JButton("INSCREVER");
+		btInscricao = new JButton("INSCRIÇÃO");
 		btLogin = new JButton("LOGIN");
 		
 		// dimencionando os botões
