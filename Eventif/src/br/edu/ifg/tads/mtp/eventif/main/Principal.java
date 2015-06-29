@@ -26,6 +26,6 @@ public class Principal {
 		app.getPainelDireita().add(new LoginControl().getLoginControl(app));
 		app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl(app));
 		app.setVisible(true);
-		//con.getConnection();
+		con.getConnection();
 	}
 }

@@ -40,14 +40,14 @@ public class PessoaDao {
 	
 	public int retornaMaxIdPessoa(){
 		int retorno=0;
-		String sql = "select max(idPessoa) from pessoa;";
+		String sql = "select max(idPessoa) as ultimo from pessoa;";
 		Connection con = null;
 		try{
 			con = new ConnectionFactory().getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()){
-				retorno = rs.getInt("idPessoa");
+				retorno = rs.getInt("ultimo");
 			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "Não deu pra retornar"+e.getMessage());

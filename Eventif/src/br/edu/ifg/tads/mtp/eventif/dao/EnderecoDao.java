@@ -26,7 +26,7 @@ public class EnderecoDao {
 			
 			stmt.execute();
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, "Não deu pra inserir"+e.getMessage());
+			JOptionPane.showMessageDialog(null, "Não deu pra inserir "+e.getMessage());
 			retorno = false;
 		} finally{
 			try{
@@ -41,14 +41,16 @@ public class EnderecoDao {
 	
 	public int retornaMaxIdEndereco(){
 		int retorno=0;
-		String sql = "select max(idEndereco) from endereco;";
+		String sql = "select max(idEndereco) as ultimo from endereco";
 		Connection con = null;
 		try{
 			con = new ConnectionFactory().getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()){
-				retorno = rs.getInt("idEndereco");
+				retorno = rs.getInt("ultimo");
+			}else{
+				JOptionPane.showMessageDialog(null, "não foi possível pegar o retorno");
 			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "Não deu pra retornar"+e.getMessage());

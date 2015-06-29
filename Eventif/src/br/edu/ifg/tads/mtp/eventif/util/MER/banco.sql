@@ -69,7 +69,7 @@ CREATE TABLE Aluno (
                 idAluno INTEGER NOT NULL DEFAULT nextval('aluno_idaluno_seq'),
                 idPessoa INTEGER NOT NULL,
                 senha VARCHAR NOT NULL,
-                idCracha INTEGER NOT NULL,
+                idCracha INTEGER,
                 CONSTRAINT aluno_pk PRIMARY KEY (idAluno)
 );
 

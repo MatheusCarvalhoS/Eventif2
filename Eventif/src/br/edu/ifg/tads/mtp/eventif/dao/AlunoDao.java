@@ -12,7 +12,7 @@ import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 public class AlunoDao {
 	public boolean adiconaAluno(AlunoModel aluno){
 			boolean retorno=true;
-			String sql = "insert into aluno (idPessoa, senha) values(?,?,?,?)";
+			String sql = "insert into aluno (idPessoa, senha) values(?,?)";
 			Connection con = null;
 			try{
 				con = new ConnectionFactory().getConnection();
@@ -23,7 +23,7 @@ public class AlunoDao {
 				
 				stmt.execute();
 			}catch(Exception e){
-				JOptionPane.showMessageDialog(null, "Não deu pra inserir"+e.getMessage());
+				JOptionPane.showMessageDialog(null, "Não deu pra inserir "+e.getMessage());
 				retorno = false;
 			} finally{
 				try{
