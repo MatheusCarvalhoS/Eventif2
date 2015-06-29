@@ -2,7 +2,6 @@ package br.edu.ifg.tads.mtp.eventif.model;
 
 public class AlunoModel extends PessoaModel{
 	private int idAluno;
-	private int idPessoa;
 	private String senha;
 	
 	public int getIdAluno() {
@@ -10,12 +9,6 @@ public class AlunoModel extends PessoaModel{
 	}
 	public void setIdAluno(int idAluno) {
 		this.idAluno = idAluno;
-	}
-	public int getIdPessoa() {
-		return idPessoa;
-	}
-	public void setIdPessoa(int idPessoa) {
-		this.idPessoa = idPessoa;
 	}
 	public String getSenha() {
 		return senha;

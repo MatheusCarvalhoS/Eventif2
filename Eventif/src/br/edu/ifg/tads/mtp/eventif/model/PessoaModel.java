@@ -6,7 +6,8 @@ public abstract class PessoaModel {
 	private String nomePessoa;
 	private String cpf;
 	private String rg;
-	private int idEncereco;
+	private int idEndereco;
+	private boolean ativo;
 
 	public int getIdPessoa() {
 		return idPessoa;
@@ -40,11 +41,20 @@ public abstract class PessoaModel {
 		this.rg = rg;
 	}
 
-	public int getIdEncereco() {
-		return idEncereco;
+	public int getIdEndereco() {
+		return idEndereco;
 	}
 
-	public void setIdEncereco(int idEncereco) {
-		this.idEncereco = idEncereco;
+	public void setIdEndereco(int idEncereco) {
+		this.idEndereco = idEncereco;
 	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 }

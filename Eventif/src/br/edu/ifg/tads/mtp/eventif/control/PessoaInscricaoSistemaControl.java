@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.edu.ifg.tads.mtp.eventif.dao.AlunoDao;
+import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDao;
+import br.edu.ifg.tads.mtp.eventif.dao.PessoaDao;
 import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
 import br.edu.ifg.tads.mtp.eventif.util.VerificaCamposPessoaInscricao;
@@ -35,7 +38,16 @@ public class PessoaInscricaoSistemaControl {
 					aluno.setRg(inscreverPessoa.getTxRg().getText());
 					aluno.setSenha(inscreverPessoa.getTxSenha().getText());
 					
-					JOptionPane.showMessageDialog(null, "Inscrevi");
+					if(new EnderecoDao().adiconaEndereco(endereco)){
+						aluno.setIdEndereco(new EnderecoDao().retornaMaxIdEndereco());
+						if(new PessoaDao().adiconaPessoa(aluno)){
+							aluno.setIdPessoa(new PessoaDao().retornaMaxIdPessoa());
+							if(new AlunoDao().adiconaAluno(aluno)){
+								JOptionPane.showMessageDialog(null, "Aluno inscrito com sucesso, CPF: "+aluno.getCpf());
+							}
+						}
+					}
+					//JOptionPane.showMessageDialog(null, "Inscrevi");
 				}else{
 					JOptionPane.showMessageDialog(null, "Verifique o preenchimento dos campos");
 				}
