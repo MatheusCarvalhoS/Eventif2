@@ -29,6 +29,7 @@ public class GerenteCriarEventoControl {
 		return painel;
 	}
 
+	
 	public void adicionaEventos() {
 		criarEvento.getBtCriar().addActionListener(new ActionListener() {
 

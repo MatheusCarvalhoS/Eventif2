@@ -30,7 +30,7 @@ public class LoginControl {
 						appView.getPainelEsquerda().add(new MenuPrincipalGerenteControl().getMenuPrincipalGerente(appView));
 						appView.getPainelEsquerda().repaint();
 						appView.getPainelDireita().removeAll();
-						appView.getPainelDireita().add(new GerenteListarEventoControl().getGerenteListarEventoControl());
+						appView.getPainelDireita().add(new GerenteListarEventoControl().getGerenteListarEventoControl(appView));
 						appView.getPainelDireita().repaint();
 					}else if(text.equals("Monitor (a)")){
 						

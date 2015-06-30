@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class EventoModel {
 
-	private int idEvento;
+	private long idEvento;
 	private String nome;
 	private Calendar dataInicio;
 	private Calendar dataFim;
@@ -14,11 +14,11 @@ public class EventoModel {
 	private int idEndereco;
 	private String descricao;
 
-	public int getIdEvento() {
+	public long getIdEvento() {
 		return idEvento;
 	}
 
-	public void setIdEvento(int idEvento) {
+	public void setIdEvento(long idEvento) {
 		this.idEvento = idEvento;
 	}
 
@@ -76,14 +76,6 @@ public class EventoModel {
 
 	public void setIdEndereco(int idEndereco) {
 		this.idEndereco = idEndereco;
-	}
-
-	public int getId() {
-		return idEvento;
-	}
-
-	public void setId(int id) {
-		this.idEvento = idEvento;
 	}
 
 	public String getNome() {

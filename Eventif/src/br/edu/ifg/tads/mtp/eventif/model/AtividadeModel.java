@@ -1,17 +1,24 @@
 package br.edu.ifg.tads.mtp.eventif.model;
 
-import java.util.Calendar;
-
 public class AtividadeModel {
 	private int idAtividade;
 	private int idEvento;
 	private String nomeAtividade;
 	private String descricaoAtividade;
-	private Calendar horaInicio;
-	private Calendar horaEncerramento;
+	private String horaInicio;
+	private String horaEncerramento;
 	private String tipoAtividade;
 	private String cargaHoraria;
 	private int numeroVagas;
+	private String data;
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
 
 	public int getIdAtividade() {
 		return idAtividade;
@@ -45,19 +52,19 @@ public class AtividadeModel {
 		this.descricaoAtividade = descricaoAtividade;
 	}
 
-	public Calendar getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Calendar horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public Calendar getHoraEncerramento() {
+	public String getHoraEncerramento() {
 		return horaEncerramento;
 	}
 
-	public void setHoraEncerramento(Calendar horaEncerramento) {
+	public void setHoraEncerramento(String horaEncerramento) {
 		this.horaEncerramento = horaEncerramento;
 	}
 

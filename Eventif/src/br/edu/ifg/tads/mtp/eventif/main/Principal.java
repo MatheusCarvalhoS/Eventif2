@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import br.edu.ifg.tads.mtp.eventif.bd.ConnectionFactory;
 import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 import br.edu.ifg.tads.mtp.eventif.view.AppView;
+import br.edu.ifg.tads.mtp.eventif.view.GerenteCriarAtividadeView;
 import br.edu.ifg.tads.mtp.eventif.view.GerenteCriarEventoView;
 import br.edu.ifg.tads.mtp.eventif.view.GerenteListarEventoView;
 import br.edu.ifg.tads.mtp.eventif.view.LoginView;
@@ -23,7 +24,9 @@ public class Principal {
 		ConnectionFactory con = new ConnectionFactory();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setLayout(null);
-		app.getPainelDireita().add(new LoginControl().getLoginControl(app));
+		app.getPainelDireita().add(new GerenteCriarAtividadeControl().getGerenteCriarAtividadeControl(1));
+		//app.getPainelDireita().add(new LoginControl().getLoginControl(app));
+		//app.getPainelDireita().add(new GerenteListarEventoControl().getGerenteListarEventoControl(app));
 		app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl(app));
 		app.setVisible(true);
 		con.getConnection();

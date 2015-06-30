@@ -365,4 +365,5 @@ public class GerenteCriarEventoView {
 	public void setBtCriar(JButton btCriar) {
 		this.btCriar = btCriar;
 	}
+	
 }

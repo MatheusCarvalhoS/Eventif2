@@ -23,7 +23,7 @@ public class MenuPrincipalGerenteControl {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				appView.getPainelDireita().removeAll();
-				appView.getPainelDireita().add(new GerenteListarEventoControl().getGerenteListarEventoControl());
+				appView.getPainelDireita().add(new GerenteListarEventoControl().getGerenteListarEventoControl(appView));
 				appView.getPainelDireita().repaint();
 			}
 		});
