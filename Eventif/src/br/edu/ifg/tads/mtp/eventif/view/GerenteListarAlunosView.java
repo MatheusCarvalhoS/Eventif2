@@ -22,7 +22,7 @@ public class GerenteListarAlunosView{
 	 */
 	public JPanel getGerenteListarAlunosView() {
 		painel = new JPanel();
-		painel.setBounds(0, 0, 779, 624);
+		painel.setBounds(0, 0, 979, 624);
 		painel.setLayout(null);
 		
 		jtfPesquisar = new JTextField();
@@ -42,11 +42,11 @@ public class GerenteListarAlunosView{
 		
 		table = new JTable ();
 		table.setFont(new Font("HanziPen TC", Font.BOLD, 15));
-		table.setBounds(5, 60, 770, 500);
+		table.setBounds(5, 60, 970, 500);
 		table.setBackground(UIManager.getColor("Button.background"));
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  
 		JScrollPane jScrollPane = new JScrollPane(table);
-		jScrollPane.setBounds(5, 60, 770, 450);
+		jScrollPane.setBounds(5, 60, 970, 450);
 		
 		painel.add(jScrollPane);
 		painel.add(jtfPesquisar);

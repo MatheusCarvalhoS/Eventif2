@@ -90,9 +90,6 @@ public class EventoDAO {
 				
 				colunas.add(sdf.format(evento.getDataInicio().getTime()));
 				colunas.add(sdf.format(evento.getDataFim().getTime()));
-				colunas.add("alterar");
-				colunas.add("excluir");
-				colunas.add("addAtividade");
 				
 				listaEventos.add(colunas);
 			}
@@ -102,6 +99,45 @@ public class EventoDAO {
 			
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Erro ao listar tabelas de eventos! ");
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public EventoModel buscaEventos(int id){
+		try {
+			EventoModel evento = new EventoModel();
+			PreparedStatement stmt = new ConnectionFactory()
+					.getConnection()
+					.prepareStatement(
+							"select * from evento where(idEvento = ?);");
+			
+			stmt.setInt(1,id);
+			ResultSet result = stmt.executeQuery();
+			if(result.next()){
+				
+				evento.setIdEvento(result.getLong("idEvento"));
+				evento.setNome(result.getString("nomeEvento"));
+				
+				Calendar dataInicio = Calendar.getInstance();
+				dataInicio.setTime(result.getDate("dataInicio"));
+				
+				evento.setDataInicio(dataInicio);
+				
+				Calendar dataFim = Calendar.getInstance();
+				dataFim.setTime(result.getDate("dataEncerramento"));
+				
+				evento.setDataFim(dataFim);
+				
+			}else{
+				JOptionPane.showMessageDialog(null, "Erro ao encontrar o Evento selecionado! ");
+			}
+			result.close();
+			stmt.close();
+			return evento;
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro na conexão com o banco de dados! ");
 			throw new RuntimeException(e);
 		}
 	}

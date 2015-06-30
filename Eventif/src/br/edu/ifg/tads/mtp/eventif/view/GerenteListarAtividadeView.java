@@ -12,17 +12,16 @@ import javax.swing.table.DefaultTableModel;
 import br.edu.ifg.tads.mtp.eventif.control.GVizualizarEventoControl;
 import br.edu.ifg.tads.mtp.eventif.model.EventoModel;
 
-public class GerenteListarEventoView {
+public class GerenteListarAtividadeView {
 	private JPanel painel;
 	private JTextField jtfPesquisar;
 	private JTable table;
 	private JButton jbtnPesquisar;
-	private JButton alterarEvento;
-	private JButton excluirEvento;
-	private JButton addAtividade;
-	private JButton listarAtividade;
+	private JButton alterarAtividade;
+	private JButton excluirAtividade;
+	private JButton novaAtividade;
 
-	public JPanel getGerenteListarEventoView() {
+	public JPanel getGerenteListarAtividadeView() {
 		painel = new JPanel();
 		painel.setBounds(0, 0, 979, 624);
 		painel.setLayout(null);
@@ -51,20 +50,13 @@ public class GerenteListarEventoView {
 		JScrollPane jScrollPane = new JScrollPane(table);
 		jScrollPane.setBounds(5, 60, 970, 450);
 
-		addAtividade = new JButton("AddAtividade");
-		excluirEvento = new JButton("Excluir");
-		alterarEvento = new JButton("Alterar");
-		listarAtividade = new JButton("Atividades");
+		novaAtividade = new JButton("AddAtividade");
+		excluirAtividade = new JButton("Excluir");
+		alterarAtividade = new JButton("Alterar");
 
-		addAtividade.setBounds(5, 550, 170, 25);
-		excluirEvento.setBounds(190, 550, 170, 25);
-		alterarEvento.setBounds(375, 550, 170, 25);
-		listarAtividade.setBounds(560, 550, 170, 25);
+		novaAtividade.setBounds(0, 580, 100, 25);
 
-		painel.add(addAtividade);
-		painel.add(excluirEvento);
-		painel.add(alterarEvento);
-		painel.add(listarAtividade);
+		painel.add(novaAtividade);
 		painel.add(jScrollPane);
 		painel.add(jtfPesquisar);
 		painel.add(jbtnPesquisar);
@@ -73,28 +65,36 @@ public class GerenteListarEventoView {
 		return painel;
 	}
 
-	public JButton getAlterarEvento() {
-		return alterarEvento;
+	public JButton getAlterarAtividade() {
+		return alterarAtividade;
 	}
 
-	public void setAlterarEvento(JButton alterarEvento) {
-		this.alterarEvento = alterarEvento;
+	public void setAlterarAtividade(JButton alterarAtividade) {
+		this.alterarAtividade = alterarAtividade;
 	}
 
-	public JButton getExcluirEvento() {
-		return excluirEvento;
+	public JButton getExcluirAtividade() {
+		return excluirAtividade;
 	}
 
-	public void setExcluirEvento(JButton excluirEvento) {
-		this.excluirEvento = excluirEvento;
+	public void setExcluirAtividade(JButton excluirAtividade) {
+		this.excluirAtividade = excluirAtividade;
+	}
+
+	public JButton getNovaAtividade() {
+		return novaAtividade;
+	}
+
+	public void setNovaAtividade(JButton novaAtividade) {
+		this.novaAtividade = novaAtividade;
 	}
 
 	public JButton getAddAtividade() {
-		return addAtividade;
+		return novaAtividade;
 	}
 
 	public void setAddAtividade(JButton addAtividade) {
-		this.addAtividade = addAtividade;
+		this.novaAtividade = addAtividade;
 	}
 
 	public JTextField getJtfPesquisar() {
@@ -120,14 +120,4 @@ public class GerenteListarEventoView {
 	public void setJbtnPesquisar(JButton jbtnPesquisar) {
 		this.jbtnPesquisar = jbtnPesquisar;
 	}
-
-	public JButton getListarAtividade() {
-		return listarAtividade;
-	}
-
-	public void setListarAtividade(JButton listarAtividade) {
-		this.listarAtividade = listarAtividade;
-	}
-	
-	
 }

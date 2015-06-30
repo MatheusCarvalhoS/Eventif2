@@ -1,7 +1,9 @@
 package br.edu.ifg.tads.mtp.eventif.model;
 
+import java.util.Calendar;
+
 public class AtividadeModel {
-	private int idAtividade;
+	private long idAtividade;
 	private int idEvento;
 	private String nomeAtividade;
 	private String descricaoAtividade;
@@ -10,22 +12,34 @@ public class AtividadeModel {
 	private String tipoAtividade;
 	private String cargaHoraria;
 	private int numeroVagas;
-	private String data;
-
-	public String getData() {
+	private Calendar data;
+	
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
-	public int getIdAtividade() {
+	private String palestrante;
+
+	public String getPalestrante() {
+		return palestrante;
+	}
+
+	public void setPalestrante(String palestrante) {
+		this.palestrante = palestrante;
+	}
+
+	
+
+	public long getIdAtividade() {
 		return idAtividade;
 	}
 
-	public void setIdAtividade(int idAtividade) {
-		this.idAtividade = idAtividade;
+	public void setIdAtividade(long l) {
+		this.idAtividade = l;
 	}
 
 	public int getIdEvento() {

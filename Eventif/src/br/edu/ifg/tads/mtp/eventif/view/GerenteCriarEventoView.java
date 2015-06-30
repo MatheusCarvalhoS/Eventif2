@@ -43,7 +43,7 @@ public class GerenteCriarEventoView {
 	
 	public JPanel getGerenteCriarEventoView() {
 		painel = new JPanel();
-		painel.setBounds(0, 0, 779, 624);
+		painel.setBounds(0, 0, 979, 624);
 		painel.setLayout(null);
 		//Criação dos elemento
 		nome = new JLabel("Nome:");
@@ -140,118 +140,6 @@ public class GerenteCriarEventoView {
 		
 		painel.setBackground(new Color(240, 240, 240));
 		return painel;
-	}
-
-	public JPanel getPainel() {
-		return painel;
-	}
-
-	public void setPainel(JPanel painel) {
-		this.painel = painel;
-	}
-
-	public JLabel getNome() {
-		return nome;
-	}
-
-	public void setNome(JLabel nome) {
-		this.nome = nome;
-	}
-
-	public JLabel getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(JLabel descricao) {
-		this.descricao = descricao;
-	}
-
-	public JLabel getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(JLabel dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public JLabel getDataEncerramento() {
-		return dataEncerramento;
-	}
-
-	public void setDataEncerramento(JLabel dataEncerramento) {
-		this.dataEncerramento = dataEncerramento;
-	}
-
-	public JLabel getOrganizador() {
-		return organizador;
-	}
-
-	public void setOrganizador(JLabel organizador) {
-		this.organizador = organizador;
-	}
-
-	public JLabel getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(JLabel telefone) {
-		this.telefone = telefone;
-	}
-
-	public JLabel getEmail() {
-		return email;
-	}
-
-	public void setEmail(JLabel email) {
-		this.email = email;
-	}
-
-	public JLabel getLocal() {
-		return local;
-	}
-
-	public void setLocal(JLabel local) {
-		this.local = local;
-	}
-
-	public JLabel getCep() {
-		return cep;
-	}
-
-	public void setCep(JLabel cep) {
-		this.cep = cep;
-	}
-
-	public JLabel getNumero() {
-		return numero;
-	}
-
-	public void setNumero(JLabel numero) {
-		this.numero = numero;
-	}
-
-	public JLabel getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(JLabel bairro) {
-		this.bairro = bairro;
-	}
-
-	public JLabel getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(JLabel cidade) {
-		this.cidade = cidade;
-	}
-
-	public JLabel getUf() {
-		return uf;
-	}
-
-	public void setUf(JLabel uf) {
-		this.uf = uf;
 	}
 
 	public JTextField getTxNome() {
@@ -365,5 +253,6 @@ public class GerenteCriarEventoView {
 	public void setBtCriar(JButton btCriar) {
 		this.btCriar = btCriar;
 	}
+	
 	
 }

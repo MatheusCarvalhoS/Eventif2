@@ -25,12 +25,25 @@ public class GerenteCriarEventoControl {
 	public JPanel getGerenteCriarEventoControl() {
 		criarEvento = new GerenteCriarEventoView();
 		painel = criarEvento.getGerenteCriarEventoView();
-		adicionaEventos();
+		adicionaEventosCriar();
 		return painel;
 	}
 
+	public JPanel getGerenteAlterarEventoControl(int id) {
+		
+		EventoModel evento = new EventoDAO().buscaEventos(id);
+		
+		criarEvento = new GerenteCriarEventoView();
+		painel = criarEvento.getGerenteCriarEventoView();
+		//adicionaEventosAlterar();
+		criarEvento.getBtCriar().setText("Alterar");
+		criarEvento.getTxNome().setText(evento.getNome());
+		return painel;
+	}
 	
-	public void adicionaEventos() {
+
+	
+	public void adicionaEventosCriar() {
 		criarEvento.getBtCriar().addActionListener(new ActionListener() {
 
 			@Override

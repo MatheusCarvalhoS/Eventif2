@@ -21,7 +21,7 @@ public class LoginView {
 	
 	public JPanel getPainelLogin() {
 		painel = new JPanel();
-		painel.setBounds(0, 0, 779, 624);
+		painel.setBounds(0, 0, 979, 624);
 		painel.setLayout(null);
 		
 		String[] moduloStrings = { "Participante", "Monitor (a)", "Gerente" };

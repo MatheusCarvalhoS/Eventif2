@@ -38,7 +38,7 @@ public class PessoaInscricaoSistemaView {
 
 	public JPanel getPessoaInscricaoSistemaView() {
 		painel = new JPanel();
-		painel.setBounds(0, 0, 779, 624);
+		painel.setBounds(0, 0, 979, 624);
 		painel.setLayout(null);
 
 		// Criando JLabels
