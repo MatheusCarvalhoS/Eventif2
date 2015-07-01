@@ -11,19 +11,30 @@ import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDao;
 import br.edu.ifg.tads.mtp.eventif.dao.PessoaDao;
 import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
+import br.edu.ifg.tads.mtp.eventif.util.ConfirmaSenha;
+import br.edu.ifg.tads.mtp.eventif.util.ValidacaoCPF;
 import br.edu.ifg.tads.mtp.eventif.util.VerificaCamposPessoaInscricao;
+import br.edu.ifg.tads.mtp.eventif.view.AppView;
 import br.edu.ifg.tads.mtp.eventif.view.PessoaInscricaoSistemaView;
 
 public class PessoaInscricaoSistemaControl {
 	private PessoaInscricaoSistemaView inscreverPessoa;
 	private JPanel painel;
+	private AppView appView;
+	
+	public JPanel getPessoaInscricaoSistemaControl(AppView app){
+		this.appView = app;
+		inscreverPessoa=new PessoaInscricaoSistemaView();
+		painel=inscreverPessoa.getPessoaInscricaoSistemaView();
+		adicionaEventos();
+		return painel;
+	}
 	
 	public void adicionaEventos(){
 		inscreverPessoa.getBtInscrever().addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(new VerificaCamposPessoaInscricao().getVerificaCamposPessoaInscricao(inscreverPessoa)){
+					boolean validacao = true;
 					EnderecoModel endereco = new EnderecoModel();
 					endereco.setCep(inscreverPessoa.getTxCep().getText());
 					endereco.setUf(inscreverPessoa.getTxUf().getText());
@@ -34,32 +45,41 @@ public class PessoaInscricaoSistemaControl {
 					
 					AlunoModel aluno = new AlunoModel();
 					aluno.setNomePessoa(inscreverPessoa.getTxNome().getText());
-					aluno.setCpf(inscreverPessoa.getTxCpf().getText());
-					aluno.setRg(inscreverPessoa.getTxRg().getText());
-					aluno.setSenha(inscreverPessoa.getTxSenha().getText());
+					String cpf = inscreverPessoa.getTxCpf().getText().replace(".","").replace("-","");
+					if(!new ValidacaoCPF().validaCpf(cpf)){
+						validacao = false;
+						JOptionPane.showMessageDialog(null, "CPF inválido!");
+					}else if(!new ConfirmaSenha().confirmaSenha(inscreverPessoa.getTxSenha().getText(), inscreverPessoa.getTxConfirmaSenha().getText())){
+						validacao = false;
+						JOptionPane.showMessageDialog(null, "Senhas não conferem!");
+					}else{
+						aluno.setCpf(cpf);
+						aluno.setRg(inscreverPessoa.getTxRg().getText());
+						aluno.setSenha(inscreverPessoa.getTxSenha().getText());
+					}
 					
-					if(new EnderecoDao().adiconaEndereco(endereco)){
+					if(!validacao){
+						inscreverPessoa.getTxCpf().setText("");
+						inscreverPessoa.getTxSenha().setText("");
+						inscreverPessoa.getTxConfirmaSenha().setText("");
+					}
+					
+					if(validacao && new EnderecoDao().adiconaEndereco(endereco)){
 						aluno.setIdEndereco(new EnderecoDao().retornaMaxIdEndereco());
 						if(new PessoaDao().adiconaPessoa(aluno)){
 							aluno.setIdPessoa(new PessoaDao().retornaMaxIdPessoa());
 							if(new AlunoDao().adiconaAluno(aluno)){
 								JOptionPane.showMessageDialog(null, "Aluno inscrito com sucesso, CPF: "+aluno.getCpf());
+								appView.getPainelDireita().removeAll();
+								appView.getPainelDireita().add(new AlunoListarEventoControl().getAlunoListarEventoControl());
+								appView.getPainelDireita().repaint();
 							}
 						}
 					}
-					//JOptionPane.showMessageDialog(null, "Inscrevi");
 				}else{
 					JOptionPane.showMessageDialog(null, "Verifique o preenchimento dos campos");
 				}
-				
 			}
 		});
-	}
-	
-	public JPanel getPessoaInscricaoSistemaControl(){
-		inscreverPessoa=new PessoaInscricaoSistemaView();
-		painel=inscreverPessoa.getPessoaInscricaoSistemaView();
-		adicionaEventos();
-		return painel;
 	}
 }

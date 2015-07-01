@@ -3,6 +3,7 @@ package br.edu.ifg.tads.mtp.eventif.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
@@ -18,21 +19,18 @@ public class PessoaDao {
 			try{
 				con = new ConnectionFactory().getConnection();
 				PreparedStatement stmt = con.prepareStatement(sql);
-				
 				stmt.setString(1, aluno.getNomePessoa());
 				stmt.setString(2, aluno.getCpf());
 				stmt.setString(3, aluno.getRg());
 				stmt.setInt(4, aluno.getIdEndereco());
 				stmt.execute();
-			}catch(Exception e){
-				JOptionPane.showMessageDialog(null, "Não deu pra inserir"+e.getMessage());
-				retorno = false;
+			}catch(SQLException e){
+				JOptionPane.showMessageDialog(null, "Não foi possível inserir. "+e.getMessage());
 			} finally{
 				try{
 					con.close();
-				}catch(Exception e){
-					JOptionPane.showMessageDialog(null, "Deu merda, não deu pra fechar");
-					retorno=false;
+				}catch(SQLException e){
+					JOptionPane.showMessageDialog(null, "Impossível fechar conexão");
 				}
 			}
 			return retorno;
@@ -50,12 +48,12 @@ public class PessoaDao {
 				retorno = rs.getInt("ultimo");
 			}
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, "Não deu pra retornar"+e.getMessage());
+			JOptionPane.showMessageDialog(null, "Não foi possível inserir. "+e.getMessage());
 		} finally{
 			try{
 				con.close();
 			}catch(Exception e){
-				JOptionPane.showMessageDialog(null, "Deu merda, não deu pra fechar");
+				JOptionPane.showMessageDialog(null, "Impossível fechar conexão");
 			}
 		}
 		return retorno;

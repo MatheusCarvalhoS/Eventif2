@@ -8,7 +8,7 @@ public class VerificaCamposLogin {
 		boolean verify = true;
 		this.login = login;
 		
-		if(login.getTfCpf().getText().isEmpty()){
+		if(login.getTxCpf().getText().isEmpty()){
 			verify = false;
 		}else if(login.getTfSenha().getText().isEmpty()){
 			verify = false;

@@ -19,13 +19,6 @@ public class AlunoListarEventoControl {
 		return painel;
 	}
 	
-	public JPanel getAlunoListarAtividadeControl(){
-		listarEvento=new AlunoListarEventoView();
-		painel=listarEvento.getAlunoListarEventoView();
-		adicionaEventos();
-		return painel;
-	}
-	
 	public void adicionaEventos(){
 		listarEvento.getJbtnPesquisar().addActionListener(new ActionListener() {
 			

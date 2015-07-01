@@ -8,11 +8,8 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import br.edu.ifg.tads.mtp.eventif.dao.AlunoDao;
 import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDao;
 import br.edu.ifg.tads.mtp.eventif.dao.EventoDAO;
-import br.edu.ifg.tads.mtp.eventif.dao.PessoaDao;
-import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EventoModel;
 import br.edu.ifg.tads.mtp.eventif.util.VerificaCamposCriarEvento;
@@ -46,6 +43,7 @@ public class GerenteCriarEventoControl {
 	public void adicionaEventosCriar() {
 		criarEvento.getBtCriar().addActionListener(new ActionListener() {
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (new VerificaCamposCriarEvento()

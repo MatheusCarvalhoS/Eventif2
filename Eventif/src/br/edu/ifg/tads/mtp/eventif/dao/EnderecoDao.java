@@ -3,6 +3,7 @@ package br.edu.ifg.tads.mtp.eventif.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
@@ -25,15 +26,13 @@ public class EnderecoDao {
 			stmt.setString(5, endereco.getUf());
 			
 			stmt.execute();
-		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, "Não deu pra inserir "+e.getMessage());
-			retorno = false;
+		}catch(SQLException e){
+			JOptionPane.showMessageDialog(null, "Não foi possível inserir. "+e.getMessage());
 		} finally{
 			try{
 				con.close();
-			}catch(Exception e){
-				JOptionPane.showMessageDialog(null, "Deu merda, não deu pra fechar");
-				retorno=false;
+			}catch(SQLException e){
+				JOptionPane.showMessageDialog(null, "Impossível fechar conexão");
 			}
 		}
 		return retorno;

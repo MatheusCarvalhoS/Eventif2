@@ -39,19 +39,13 @@ public class EventoDAO {
 			stmt.setInt(8, evento.getIdEndereco());
 			// executa
 			stmt.execute();
-		} catch (Exception e) {
-
-			retorno = false;
-			throw new RuntimeException(
-					"falha ao tentar executar um comando no BD. Verifique sua conexão");
-		} finally {
-			try {
+		}catch(SQLException e){
+			JOptionPane.showMessageDialog(null, "Não foi possível inserir. "+e.getMessage());
+		} finally{
+			try{
 				con.close();
-			} catch (Exception e) {
-
-				retorno = false;
-				throw new RuntimeException(
-						"não foi possível fechar a conexão com o BD");
+			}catch(SQLException e){
+				JOptionPane.showMessageDialog(null, "Impossível fechar conexão");
 			}
 		}
 		return retorno;
@@ -98,7 +92,85 @@ public class EventoDAO {
 			return listaEventos;
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao listar tabelas de eventos! ");
+			JOptionPane.showMessageDialog(null, "Erro ao listar tabela de eventos! ");
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public EventoModel buscaEventos1(int id){
+		try {
+			EventoModel evento = new EventoModel();
+			PreparedStatement stmt = new ConnectionFactory()
+					.getConnection()
+					.prepareStatement(
+							"select * from evento where(idEvento = ?);");
+			
+			stmt.setInt(1,id);
+			ResultSet result = stmt.executeQuery();
+			if(result.next()){
+				
+				evento.setIdEvento(result.getLong("idEvento"));
+				evento.setNome(result.getString("nomeEvento"));
+				
+				Calendar dataInicio = Calendar.getInstance();
+				dataInicio.setTime(result.getDate("dataInicio"));
+				
+				evento.setDataInicio(dataInicio);
+				
+				Calendar dataFim = Calendar.getInstance();
+				dataFim.setTime(result.getDate("dataEncerramento"));
+				
+				evento.setDataFim(dataFim);
+				
+			}else{
+				JOptionPane.showMessageDialog(null, "Erro ao encontrar o Evento selecionado! ");
+			}
+			result.close();
+			stmt.close();
+			return evento;
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro na conexão com o banco de dados! ");
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public EventoModel buscaEventos(int id){
+		try {
+			EventoModel evento = new EventoModel();
+			PreparedStatement stmt = new ConnectionFactory()
+					.getConnection()
+					.prepareStatement(
+							"select * from evento where(idEvento = ?);");
+			
+			stmt.setInt(1,id);
+			ResultSet result = stmt.executeQuery();
+			if(result.next()){
+				
+				evento.setIdEvento(result.getLong("idEvento"));
+				evento.setNome(result.getString("nomeEvento"));
+				
+				Calendar dataInicio = Calendar.getInstance();
+				dataInicio.setTime(result.getDate("dataInicio"));
+				
+				evento.setDataInicio(dataInicio);
+				
+				Calendar dataFim = Calendar.getInstance();
+				dataFim.setTime(result.getDate("dataEncerramento"));
+				
+				evento.setDataFim(dataFim);
+				
+			}else{
+				JOptionPane.showMessageDialog(null, "Erro ao encontrar o Evento selecionado! ");
+			}
+			result.close();
+			stmt.close();
+			return evento;
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro na conexão com o banco de dados! ");
 			throw new RuntimeException(e);
 		}
 	}

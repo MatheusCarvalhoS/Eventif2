@@ -4,10 +4,14 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+
+import br.edu.ifg.tads.mtp.eventif.util.FormatadorMascara;
 
 public class PessoaInscricaoSistemaView {
 	private JPanel painel;
@@ -22,9 +26,10 @@ public class PessoaInscricaoSistemaView {
 	private JLabel numero;
 	private JLabel complemento;
 	private JLabel senha;
+	private JLabel confirmaSenha;
 
 	private JTextField txNome;
-	private JTextField txCpf;
+	private JFormattedTextField txCpf;
 	private JTextField txRg;
 	private JTextField txCep;
 	private JTextField txUf;
@@ -33,7 +38,8 @@ public class PessoaInscricaoSistemaView {
 	private JTextField txNumero;
 	private JTextField txComplemento;
 	private JPasswordField txSenha;
-
+	private JPasswordField txConfirmaSenha;
+	
 	private JButton btInscrever;
 
 	public JPanel getPessoaInscricaoSistemaView() {
@@ -52,10 +58,11 @@ public class PessoaInscricaoSistemaView {
 		numero = new JLabel("Numero:");
 		complemento = new JLabel("Complemento:");
 		senha = new JLabel("Senha:");
+		confirmaSenha = new JLabel("Confirme sua Senha:");
 		
 		// Criando JTextFields
 		txNome = new JTextField();
-		txCpf = new JTextField();
+		txCpf = new JFormattedTextField(new FormatadorMascara().mascara("###.###.###-##"));
 		txRg = new JTextField();
 		txCep = new JTextField();
 		txUf = new JTextField();
@@ -64,7 +71,7 @@ public class PessoaInscricaoSistemaView {
 		txNumero = new JTextField();
 		txComplemento = new JTextField();
 		txSenha = new JPasswordField();
-	
+		txConfirmaSenha = new JPasswordField();
 		btInscrever = new JButton("Inscrever");
 
 		// setando posições das Labels
@@ -78,6 +85,7 @@ public class PessoaInscricaoSistemaView {
 		numero.setBounds(20, 230, 100, 25);
 		complemento.setBounds(20, 275, 110, 25);
 		senha.setBounds(20, 320, 100, 25);
+		confirmaSenha.setBounds(20, 365, 150, 25);
 		
 		// setando as posições das TextFields
 		txNome.setBounds(20, 25, 400, 25);
@@ -90,8 +98,9 @@ public class PessoaInscricaoSistemaView {
 		txNumero.setBounds(20, 250, 100, 25);
 		txComplemento.setBounds(20, 296, 400, 25);
 		txSenha.setBounds(20, 340, 200, 25);
+		txConfirmaSenha.setBounds(20, 385, 200, 25);
 		btInscrever.setBounds(570, 540, 150, 25);
-
+		
 		// adicionando ao painel
 		painel.add(nome);
 		painel.add(cpf);
@@ -103,6 +112,7 @@ public class PessoaInscricaoSistemaView {
 		painel.add(numero);
 		painel.add(complemento);
 		painel.add(senha);
+		painel.add(confirmaSenha);
 		
 		painel.add(txNome);
 		painel.add(txCpf);
@@ -114,6 +124,7 @@ public class PessoaInscricaoSistemaView {
 		painel.add(txNumero);
 		painel.add(txComplemento);
 		painel.add(txSenha);
+		painel.add(txConfirmaSenha);
 		
 		painel.add(btInscrever);
 
@@ -129,11 +140,11 @@ public class PessoaInscricaoSistemaView {
 		this.txNome = txNome;
 	}
 
-	public JTextField getTxCpf() {
+	public JFormattedTextField getTxCpf() {
 		return txCpf;
 	}
 
-	public void setTxCpf(JTextField txCpf) {
+	public void setTxCpf(JFormattedTextField txCpf) {
 		this.txCpf = txCpf;
 	}
 
@@ -208,4 +219,13 @@ public class PessoaInscricaoSistemaView {
 	public void setBtInscrever(JButton btInscrever) {
 		this.btInscrever = btInscrever;
 	}
+
+	public JPasswordField getTxConfirmaSenha() {
+		return txConfirmaSenha;
+	}
+
+	public void setTxConfirmaSenha(JPasswordField txConfirmaSenha) {
+		this.txConfirmaSenha = txConfirmaSenha;
+	}
+	
 }

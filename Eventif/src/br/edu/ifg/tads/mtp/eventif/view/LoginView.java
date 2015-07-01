@@ -3,11 +3,14 @@ package br.edu.ifg.tads.mtp.eventif.view;
 import java.awt.Color;
 
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import br.edu.ifg.tads.mtp.eventif.util.FormatadorMascara;
 
 public class LoginView {
 	private JLabel modulo;
@@ -15,7 +18,7 @@ public class LoginView {
 	private JComboBox<String> combo;
 	private JLabel cpf;
 	private JLabel senha;
-	private JTextField tfCpf;
+	private JFormattedTextField txCpf;
 	private JPasswordField tfSenha;
 	private JButton btnOk;
 	
@@ -29,7 +32,7 @@ public class LoginView {
 		combo = new JComboBox<String>(moduloStrings);		
 		cpf = new JLabel("Cpf:");
 		senha = new JLabel("Senha:");
-		tfCpf = new JTextField();
+		txCpf = new JFormattedTextField(new FormatadorMascara().mascara("###.###.###-##"));
 		tfSenha = new JPasswordField();
 		btnOk = new JButton("OK");
 		
@@ -37,7 +40,7 @@ public class LoginView {
 		combo.setBounds(310, 210, 200, 25);
 		cpf.setBounds(250, 250, 50, 25);
 		senha.setBounds(250, 285, 50, 25);
-		tfCpf.setBounds(310, 250, 200, 25);
+		txCpf.setBounds(310, 250, 200, 25);
 		tfSenha.setBounds(310, 285, 200, 25);
 		btnOk.setBounds(435, 335, 75, 25);
 		
@@ -45,19 +48,11 @@ public class LoginView {
 		painel.add(combo);
 		painel.add(cpf);
 		painel.add(senha);
-		painel.add(tfCpf);
+		painel.add(txCpf);
 		painel.add(tfSenha);
 		painel.add(btnOk);
 		painel.setBackground(new Color(240, 240, 240));
 		return painel;
-	}
-
-	public JLabel getModulo() {
-		return modulo;
-	}
-
-	public void setModulo(JLabel modulo) {
-		this.modulo = modulo;
 	}
 
 	public JPanel getPainel() {
@@ -76,12 +71,12 @@ public class LoginView {
 		this.combo = combo;
 	}
 
-	public JTextField getTfCpf() {
-		return tfCpf;
+	public JFormattedTextField getTxCpf() {
+		return txCpf;
 	}
 
-	public void setTfCpf(JTextField tfCpf) {
-		this.tfCpf = tfCpf;
+	public void setTxCpf(JFormattedTextField txCpf) {
+		this.txCpf = txCpf;
 	}
 
 	public JTextField getTfSenha() {
