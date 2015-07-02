@@ -22,10 +22,9 @@ public class MenuPrincipalGerenteControl {
 		menu = menuGerente.getMenuPrincipalGerenteView();
 
 		menuGerente.getEventos().addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+				
 				appView.getPainelDireita().removeAll();
 				appView.getPainelDireita().add(
 						new GerenteListarEventoControl()
@@ -62,7 +61,21 @@ public class MenuPrincipalGerenteControl {
 				appView.getPainelDireita().repaint();
 			}
 		});
+		
+		//////////////////////////////// teste de leitura de QRcode
+		
+		menuGerente.getLerQRcode().addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent arg0) {             //somente abre a tela de leitura
+				try {
+					new MonitorLerQRcodeControl().getMonitorLerQRcodeView();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		return menu;
 	}
 }
