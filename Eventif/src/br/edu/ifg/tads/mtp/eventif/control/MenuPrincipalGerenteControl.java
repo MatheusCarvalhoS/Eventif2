@@ -69,7 +69,7 @@ public class MenuPrincipalGerenteControl {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {             //somente abre a tela de leitura
 				try {
-					new MonitorLerQRcodeControl().getMonitorLerQRcodeView();
+					new MonitorLerQRcodeControl().getMonitorLerQRcodeControl(appView.getDesk());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

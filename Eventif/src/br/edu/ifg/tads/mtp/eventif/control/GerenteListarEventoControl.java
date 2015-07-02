@@ -70,6 +70,11 @@ public class GerenteListarEventoControl {
 		colunas.add("nome");
 		colunas.add("dataInicio");
 		colunas.add("dataFim");
+		colunas.add("email");
+		colunas.add("organizador");
+		colunas.add("telefoneContato");
+		colunas.add("localEvento");
+		colunas.add("idEndereco");
 		
 
 		DefaultTableModel model = new DefaultTableModel(listaEvento, colunas);

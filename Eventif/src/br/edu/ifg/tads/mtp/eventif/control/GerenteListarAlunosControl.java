@@ -56,8 +56,9 @@ public class GerenteListarAlunosControl {
 		colunas.add("idAluno");
 		colunas.add("idPessoa");
 		colunas.add("Nome");
-		colunas.add("CPF");
 		colunas.add("RG");
+		colunas.add("CPF");
+		
 
 		DefaultTableModel model = new DefaultTableModel(listaAluno, colunas);
 		listarAluno.getTable().setModel(model);

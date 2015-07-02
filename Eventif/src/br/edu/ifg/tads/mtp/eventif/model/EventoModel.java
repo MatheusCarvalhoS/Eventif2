@@ -13,6 +13,17 @@ public class EventoModel {
 	private String local;
 	private int idEndereco;
 	private String descricao;
+	private String email;
+	
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public long getIdEvento() {
 		return idEvento;

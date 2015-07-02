@@ -58,24 +58,29 @@ public class EventoDAO {
 			PreparedStatement stmt = new ConnectionFactory()
 					.getConnection()
 					.prepareStatement(
-							"select idEvento, nomeEvento, dataInicio, dataEncerramento from evento order by idEvento");
+							"select * from evento order by idEvento");
 			
 			ResultSet result = stmt.executeQuery();
 			while(result.next()){
 				EventoModel evento = new EventoModel();
 				evento.setIdEvento(result.getLong("idEvento"));
 				evento.setNome(result.getString("nomeEvento"));
-				
+				evento.setDescricao(result.getString("descricaoEvento"));
 				Calendar dataInicio = Calendar.getInstance();
 				dataInicio.setTime(result.getDate("dataInicio"));
 				
 				evento.setDataInicio(dataInicio);
+				evento.setEmail(result.getString("email"));
 				
 				Calendar dataFim = Calendar.getInstance();
 				dataFim.setTime(result.getDate("dataEncerramento"));
 				
 				evento.setDataFim(dataFim);
 				
+				evento.setOrganizador(result.getString("organizador"));
+				evento.setTelefone(result.getString("telefoneContato"));
+				evento.setLocal(result.getString("localEvento"));
+				evento.setIdEndereco(result.getInt("idEndereco"));
 				
 				Vector<String> colunas = new Vector<String>();
 				colunas.add(""+evento.getIdEvento());
@@ -83,7 +88,13 @@ public class EventoDAO {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				
 				colunas.add(sdf.format(evento.getDataInicio().getTime()));
+				
 				colunas.add(sdf.format(evento.getDataFim().getTime()));
+				colunas.add(evento.getEmail());
+				colunas.add(evento.getOrganizador());
+				colunas.add(evento.getTelefone());
+				colunas.add(evento.getLocal());
+				colunas.add(""+evento.getIdEndereco());
 				
 				listaEventos.add(colunas);
 			}

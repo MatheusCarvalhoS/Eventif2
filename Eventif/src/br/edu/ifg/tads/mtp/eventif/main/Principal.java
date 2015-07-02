@@ -21,14 +21,18 @@ import br.edu.ifg.tads.mtp.eventif.control.*;
 
 public class Principal {
 	public static void main(String[] args) {
-		AppView app = new AppView();
+		JDesktopPane desk =  new JDesktopPane();
+		
+		AppView app = new AppView(desk);
 		ConnectionFactory con = new ConnectionFactory();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setLayout(null);
+		
 		//app.getPainelDireita().add(new GerenteListarAtividadeView().getGerenteListarAtividadeView());
-		app.getPainelDireita().add(new LoginControl().getLoginControl(app));
-		//app.getPainelDireita().add(new GerenteListarEventoControl().getGerenteListarEventoControl(app));
-		app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl(app));
+		//app.getPainelDireita().add(new LoginControl().getLoginControl(app));
+		app.getPainelDireita().add(new MonitorListarEventoControl().getMonitorListarEventoControl(app));
+		//app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl(app));
+		app.getPainelEsquerda().add(new MenuPrincipalGerenteControl().getMenuPrincipalGerente(app));
 		app.setVisible(true);
 		con.getConnection();
 	}
