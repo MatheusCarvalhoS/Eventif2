@@ -16,6 +16,7 @@ import br.edu.ifg.tads.mtp.eventif.view.GerenteListarAtividadeView;
 import br.edu.ifg.tads.mtp.eventif.view.GerenteListarEventoView;
 import br.edu.ifg.tads.mtp.eventif.view.LoginView;
 import br.edu.ifg.tads.mtp.eventif.view.MenuPrincipalView;
+import br.edu.ifg.tads.mtp.eventif.view.MonitorListarEventoView;
 import br.edu.ifg.tads.mtp.eventif.view.PessoaInscricaoSistemaView;
 import br.edu.ifg.tads.mtp.eventif.control.*;
 
@@ -29,10 +30,12 @@ public class Principal {
 		app.setLayout(null);
 		
 		//app.getPainelDireita().add(new GerenteListarAtividadeView().getGerenteListarAtividadeView());
-		//app.getPainelDireita().add(new LoginControl().getLoginControl(app));
-		app.getPainelDireita().add(new MonitorListarEventoControl().getMonitorListarEventoControl(app));
-		//app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl(app));
-		app.getPainelEsquerda().add(new MenuPrincipalGerenteControl().getMenuPrincipalGerente(app));
+		app.getPainelDireita().add(new LoginControl().getLoginControl(app));
+		//app.getPainelDireita().add(new MonitorListarEventoControl().getMonitorListarEventoControl(app));
+		app.getPainelEsquerda().add(new MenuPrincipalControl().getMenuPrincipalControl(app));
+		//app.getPainelEsquerda().add(new MenuPrincipalGerenteControl().getMenuPrincipalGerente(app));
+		//app.getPainelEsquerda().add(new MenuPrincipalMonitorControl().getMenuPrincipalMonitorControl(app));
+		
 		app.setVisible(true);
 		con.getConnection();
 	}

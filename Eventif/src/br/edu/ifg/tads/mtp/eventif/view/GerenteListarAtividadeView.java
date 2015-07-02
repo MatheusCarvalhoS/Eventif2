@@ -19,7 +19,7 @@ public class GerenteListarAtividadeView {
 	private JButton jbtnPesquisar;
 	private JButton alterarAtividade;
 	private JButton excluirAtividade;
-	private JButton novaAtividade;
+	private JButton addAtividade;
 
 	public JPanel getGerenteListarAtividadeView() {
 		painel = new JPanel();
@@ -35,10 +35,6 @@ public class GerenteListarAtividadeView {
 		jbtnPesquisar = new JButton("Pesquisar");
 		jbtnPesquisar.setForeground(new Color(0, 0, 128));
 		jbtnPesquisar.setFont(new Font("HanziPen TC", Font.BOLD, 12));
-		jbtnPesquisar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 
 		jbtnPesquisar.setBounds(530, 20, 117, 26);
 
@@ -50,13 +46,10 @@ public class GerenteListarAtividadeView {
 		JScrollPane jScrollPane = new JScrollPane(table);
 		jScrollPane.setBounds(5, 60, 970, 450);
 
-		novaAtividade = new JButton("AddAtividade");
 		excluirAtividade = new JButton("Excluir");
 		alterarAtividade = new JButton("Alterar");
 
-		novaAtividade.setBounds(0, 580, 100, 25);
 
-		painel.add(novaAtividade);
 		painel.add(jScrollPane);
 		painel.add(jtfPesquisar);
 		painel.add(jbtnPesquisar);
@@ -81,20 +74,12 @@ public class GerenteListarAtividadeView {
 		this.excluirAtividade = excluirAtividade;
 	}
 
-	public JButton getNovaAtividade() {
-		return novaAtividade;
-	}
-
-	public void setNovaAtividade(JButton novaAtividade) {
-		this.novaAtividade = novaAtividade;
-	}
-
 	public JButton getAddAtividade() {
-		return novaAtividade;
+		return addAtividade;
 	}
 
 	public void setAddAtividade(JButton addAtividade) {
-		this.novaAtividade = addAtividade;
+		this.addAtividade = addAtividade;
 	}
 
 	public JTextField getJtfPesquisar() {

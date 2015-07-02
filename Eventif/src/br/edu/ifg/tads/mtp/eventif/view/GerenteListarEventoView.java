@@ -36,10 +36,7 @@ public class GerenteListarEventoView {
 		jbtnPesquisar = new JButton("Pesquisar");
 		jbtnPesquisar.setForeground(new Color(0, 0, 128));
 		jbtnPesquisar.setFont(new Font("HanziPen TC", Font.BOLD, 12));
-		jbtnPesquisar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 
 		jbtnPesquisar.setBounds(530, 20, 117, 26);
 

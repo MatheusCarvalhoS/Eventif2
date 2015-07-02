@@ -142,7 +142,7 @@ public class GerenteListarEventoControl {
 		Action addAtividade = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("entreiiiii");
+				
 				int index = Integer.parseInt(e.getActionCommand());
 				int id = Integer.parseInt(listarEvento.getTable()
 						.getValueAt(index, 0).toString());

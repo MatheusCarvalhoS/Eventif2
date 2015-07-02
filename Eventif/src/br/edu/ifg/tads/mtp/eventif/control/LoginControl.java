@@ -1,4 +1,5 @@
 package br.edu.ifg.tads.mtp.eventif.control;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,14 +22,15 @@ public class LoginControl {
 	private GerenteModel gerente;
 	private MonitorModel monitor;
 	private AlunoModel aluno;
-	
-	public JPanel getLoginControl(AppView app){
-		this.appView=app;
-		login=new LoginView();
-		painel=login.getPainelLogin();
+
+	public JPanel getLoginControl(AppView app) {
+		this.appView = app;
+		login = new LoginView();
+		painel = login.getPainelLogin();
 		adicionaEventos();
 		return painel;
 	}
+
 	public void adicionaEventos() {
 		// Evento no botão OK que não faz nada
 		login.getBtnOk().addActionListener(new ActionListener() {
@@ -36,35 +38,36 @@ public class LoginControl {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean validacao = true;
 				String text = (String) login.getCombo().getSelectedItem();
-				if (new VerificaCamposLogin().getVerificaCamposCriarLogin(login)) {
-					String cpf = login.getTxCpf().getText().replace(".","").replace("-","");
+				if (new VerificaCamposLogin()
+						.getVerificaCamposCriarLogin(login)) {
+					String cpf = login.getTxCpf().getText().replace(".", "")
+							.replace("-", "");
 					String senha = login.getTfSenha().getText();
-					if(!new ValidacaoCPF().validaCpf(cpf)){
+					if (!new ValidacaoCPF().validaCpf(cpf)) {
 						validacao = false;
 						JOptionPane.showMessageDialog(null, "CPF inválido!");
 					}
-					
-					if(!validacao){
+
+					if (!validacao) {
 						login.getTxCpf().setText("");
 						login.getTfSenha().setText("");
 					}
-					
+
 					if (text.equals("Gerente")) {
 						gerente = new GerenteModel();
-						gerente.setCpf(cpf);	
+						gerente.setCpf(cpf);
 						gerente.setSenha(senha);
-						
+
 						/*
-						 if(new GerenteDao().verificaLogin(gerente)){
-						 	Faz as parada que tem q fazer q tá ali em baixo
-						 }
-						 * */
-						
+						 * if(new GerenteDao().verificaLogin(gerente)){ Faz as
+						 * parada que tem q fazer q tá ali em baixo }
+						 */
+
 						appView.getPainelEsquerda().removeAll();
 						appView.getPainelEsquerda().add(
 								new MenuPrincipalGerenteControl()
 										.getMenuPrincipalGerente(appView));
-						
+
 						appView.getPainelEsquerda().repaint();
 						appView.getPainelDireita().removeAll();
 						appView.getPainelDireita()
@@ -72,7 +75,22 @@ public class LoginControl {
 										.getGerenteListarEventoControl(appView));
 						appView.getPainelDireita().repaint();
 					} else if (text.equals("Monitor (a)")) {
+						monitor = new MonitorModel();
+						monitor.setCpf(cpf);
+						monitor.setSenha(senha);
 
+						appView.getPainelEsquerda().removeAll();
+						appView.getPainelDireita().removeAll();
+
+						appView.getPainelEsquerda()
+								.add(new MenuPrincipalMonitorControl()
+										.getMenuPrincipalMonitorControl(appView));
+						appView.getPainelDireita()
+								.add(new MonitorListarEventoControl()
+										.getMonitorListarEventoControl(appView));
+
+						appView.getPainelDireita().repaint();
+						appView.getPainelEsquerda().repaint();
 					}
 				} else {
 					JOptionPane.showMessageDialog(null,
