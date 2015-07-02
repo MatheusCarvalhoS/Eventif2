@@ -88,6 +88,8 @@ public class GerenteListarAtividadeControl {
 
 	public void adicionaEventos() {
 		
+		
+		
 		listarAtividade.getAddAtividade().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {

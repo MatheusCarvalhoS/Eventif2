@@ -47,7 +47,7 @@ public class AlunoDao {
 			PreparedStatement stmt = new ConnectionFactory()
 					.getConnection()
 					.prepareStatement(
-							"select * from aluno order by idAluno as a inner join pessoa as p where(a.idPessoa = p.idPessoa);");
+							"select * from pessoa as p inner join aluno as a on p.idPessoa=a.idPessoa;");
 			
 			ResultSet result = stmt.executeQuery();
 			while(result.next()){

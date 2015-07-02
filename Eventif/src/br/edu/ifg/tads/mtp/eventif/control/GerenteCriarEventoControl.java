@@ -27,7 +27,6 @@ public class GerenteCriarEventoControl {
 	}
 
 	public JPanel getGerenteAlterarEventoControl(int id) {
-		
 		EventoModel evento = new EventoDAO().buscaEventos(id);
 		
 		criarEvento = new GerenteCriarEventoView();
