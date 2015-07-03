@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import br.edu.ifg.tads.mtp.eventif.bd.ConnectionFactory;
 import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 
-public class AlunoDao {
+public class AlunoDAO {
 	public boolean adiconaAluno(AlunoModel aluno) {
 		boolean retorno = true;
 		String sql = "insert into aluno (idPessoa, senha) values(?,?)";

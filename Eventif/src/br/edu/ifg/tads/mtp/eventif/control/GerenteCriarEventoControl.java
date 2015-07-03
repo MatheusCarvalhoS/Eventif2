@@ -8,7 +8,7 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDao;
+import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDAO;
 import br.edu.ifg.tads.mtp.eventif.dao.EventoDAO;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EventoModel;
@@ -75,8 +75,8 @@ public class GerenteCriarEventoControl {
 					evento.setDescricao(criarEvento.getTxDescricao().getText());
 
 					
-					if(new EnderecoDao().adiconaEndereco(endereco)){
-						evento.setIdEndereco(new EnderecoDao().retornaMaxIdEndereco());
+					if(new EnderecoDAO().adiconaEndereco(endereco)){
+						evento.setIdEndereco(new EnderecoDAO().retornaMaxIdEndereco());
 						if(new EventoDAO().adicionaEvento(evento)){
 							JOptionPane.showMessageDialog(null, "Evento Criado com sucesso! ");				
 						}

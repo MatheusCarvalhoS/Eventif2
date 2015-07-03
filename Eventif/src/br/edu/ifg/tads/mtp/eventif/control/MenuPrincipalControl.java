@@ -28,7 +28,6 @@ public class MenuPrincipalControl {
 				appView.getPainelDireita().removeAll();
 				appView.getPainelDireita().add(new PessoaInscricaoSistemaControl().getPessoaInscricaoSistemaControl(appView));
 				appView.getPainelDireita().repaint();
-				//JOptionPane.showMessageDialog(null, "Cliquei em Inscrever");
 			}
 		});
 		

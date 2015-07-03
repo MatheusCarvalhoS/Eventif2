@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import br.edu.ifg.tads.mtp.eventif.dao.AlunoDao;
-import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDao;
-import br.edu.ifg.tads.mtp.eventif.dao.PessoaDao;
+import br.edu.ifg.tads.mtp.eventif.dao.AlunoDAO;
+import br.edu.ifg.tads.mtp.eventif.dao.EnderecoDAO;
+import br.edu.ifg.tads.mtp.eventif.dao.PessoaDAO;
 import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
 import br.edu.ifg.tads.mtp.eventif.util.ConfirmaSenha;
@@ -64,11 +64,11 @@ public class PessoaInscricaoSistemaControl {
 						inscreverPessoa.getTxConfirmaSenha().setText("");
 					}
 					
-					if(validacao && new EnderecoDao().adiconaEndereco(endereco)){
-						aluno.setIdEndereco(new EnderecoDao().retornaMaxIdEndereco());
-						if(new PessoaDao().adiconaPessoa(aluno)){
-							aluno.setIdPessoa(new PessoaDao().retornaMaxIdPessoa());
-							if(new AlunoDao().adiconaAluno(aluno)){
+					if(validacao && new EnderecoDAO().adiconaEndereco(endereco)){
+						aluno.setIdEndereco(new EnderecoDAO().retornaMaxIdEndereco());
+						if(new PessoaDAO().adiconaPessoa(aluno)){
+							aluno.setIdPessoa(new PessoaDAO().retornaMaxIdPessoa());
+							if(new AlunoDAO().adiconaAluno(aluno)){
 								JOptionPane.showMessageDialog(null, "Aluno inscrito com sucesso, CPF: "+aluno.getCpf());
 								appView.getPainelDireita().removeAll();
 								appView.getPainelDireita().add(new AlunoListarEventoControl().getAlunoListarEventoControl());

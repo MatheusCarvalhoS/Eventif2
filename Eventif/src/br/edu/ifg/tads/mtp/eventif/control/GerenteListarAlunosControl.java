@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-import br.edu.ifg.tads.mtp.eventif.dao.AlunoDao;
+import br.edu.ifg.tads.mtp.eventif.dao.AlunoDAO;
 import br.edu.ifg.tads.mtp.eventif.dao.EventoDAO;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
 import br.edu.ifg.tads.mtp.eventif.model.EventoModel;
@@ -31,7 +31,7 @@ public class GerenteListarAlunosControl {
 	}
 	
 	public void preencheTabela() throws SQLException {
-		Vector<Vector<String>> listaAlunos = new AlunoDao().buscaAlunos();
+		Vector<Vector<String>> listaAlunos = new AlunoDAO().buscaAlunos();
 		preencheTabelaAluno(listaAlunos);
 	}
 	
@@ -43,6 +43,17 @@ public class GerenteListarAlunosControl {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Pesquisar aqui"); 
+			}
+		});
+		
+		listarAluno.getFazerMonitor().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int id = Integer.parseInt(listarAluno.getTable()
+						.getValueAt(listarAluno.getTable().getSelectedRow(), 0).toString());
+				
+				new GerenteFazerMonitorControl().getGerenteFazerMonitorControl(id);
 			}
 		});
 	}

@@ -11,7 +11,7 @@ import br.edu.ifg.tads.mtp.eventif.bd.ConnectionFactory;
 import br.edu.ifg.tads.mtp.eventif.model.AlunoModel;
 import br.edu.ifg.tads.mtp.eventif.model.PessoaModel;
 
-public class PessoaDao {
+public class PessoaDAO {
 	public boolean adiconaPessoa(PessoaModel aluno){
 			boolean retorno=true;
 			String sql = "insert into pessoa (nomePessoa, cpf, rg, idEndereco) values(?,?,?,?)";

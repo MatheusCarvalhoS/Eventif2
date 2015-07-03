@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import br.edu.ifg.tads.mtp.eventif.dao.AlunoDao;
+import br.edu.ifg.tads.mtp.eventif.dao.AlunoDAO;
 import br.edu.ifg.tads.mtp.eventif.view.AppView;
 import br.edu.ifg.tads.mtp.eventif.view.MenuPrincipalGerenteView;
 
@@ -59,20 +59,6 @@ public class MenuPrincipalGerenteControl {
 					e1.printStackTrace();
 				}
 				appView.getPainelDireita().repaint();
-			}
-		});
-		
-		//////////////////////////////// teste de leitura de QRcode
-		
-		menuGerente.getLerQRcode().addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {             //somente abre a tela de leitura
-				try {
-					new MonitorLerQRcodeControl().getMonitorLerQRcodeControl(appView.getDesk());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
 		});
 		

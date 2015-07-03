@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import br.edu.ifg.tads.mtp.eventif.bd.ConnectionFactory;
 import br.edu.ifg.tads.mtp.eventif.model.EnderecoModel;
 
-public class EnderecoDao {
+public class EnderecoDAO {
 	public boolean adiconaEndereco(EnderecoModel endereco){
 		boolean retorno=true;
 		String sql = "insert into endereco (numero, bairro, cep, cidade, uf) values(?,?,?,?,?)";
