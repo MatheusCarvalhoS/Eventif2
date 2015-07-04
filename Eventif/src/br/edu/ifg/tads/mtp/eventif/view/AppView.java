@@ -42,7 +42,7 @@ public class AppView extends JFrame {
 		painelEsquerda.setBounds(0, 76, 220, 624);
 		painelDireita.setBounds(221, 76, 979, 624);
 		painelDireita.setBackground(new Color(171, 171, 171));
-		// painelSuperior.setBackground(new Color(165, 170, 163));
+		painelSuperior.setBackground(new Color(165, 170, 163));
 		painelSuperior.setBackground(new Color(66, 105, 51));
 		painelEsquerda.setBackground(new Color(66, 105, 51));
 
