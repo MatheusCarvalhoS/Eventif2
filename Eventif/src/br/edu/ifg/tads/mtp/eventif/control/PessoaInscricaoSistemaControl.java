@@ -76,6 +76,7 @@ public class PessoaInscricaoSistemaControl {
 							}
 						}
 					}
+					
 				}else{
 					JOptionPane.showMessageDialog(null, "Verifique o preenchimento dos campos");
 				}
