@@ -20,6 +20,7 @@ public class GerenteListarAtividadeView {
 	private JButton alterarAtividade;
 	private JButton excluirAtividade;
 	private JButton addAtividade;
+	private JButton selectMonitor;
 
 	public JPanel getGerenteListarAtividadeView() {
 		painel = new JPanel();
@@ -48,14 +49,29 @@ public class GerenteListarAtividadeView {
 
 		excluirAtividade = new JButton("Excluir");
 		alterarAtividade = new JButton("Alterar");
-
+		selectMonitor = new JButton("Selecionar Monitor");
+		
+		excluirAtividade.setBounds(5, 550, 170, 25);
+		alterarAtividade.setBounds(190, 550, 170, 25);
+		selectMonitor.setBounds(375, 550, 170, 25);
 
 		painel.add(jScrollPane);
 		painel.add(jtfPesquisar);
 		painel.add(jbtnPesquisar);
+		painel.add(excluirAtividade);
+		painel.add(alterarAtividade);
+		painel.add(selectMonitor);
 		painel.setBackground(new Color(240, 240, 240));
 
 		return painel;
+	}
+
+	public JButton getSelectMonitor() {
+		return selectMonitor;
+	}
+
+	public void setSelectMonitor(JButton selectMonitor) {
+		this.selectMonitor = selectMonitor;
 	}
 
 	public JButton getAlterarAtividade() {

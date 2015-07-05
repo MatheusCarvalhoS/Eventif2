@@ -34,6 +34,7 @@ public class GerenteCriarEventoControl {
 		//adicionaEventosAlterar();
 		criarEvento.getBtCriar().setText("Alterar");
 		criarEvento.getTxNome().setText(evento.getNome());
+		criarEvento.getTxDescricao().setText(evento.getDescricao());
 		return painel;
 	}
 	

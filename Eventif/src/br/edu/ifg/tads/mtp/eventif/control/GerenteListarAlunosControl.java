@@ -21,10 +21,20 @@ import br.edu.ifg.tads.mtp.eventif.view.GerenteListarEventoView;
 public class GerenteListarAlunosControl {
 	private GerenteListarAlunosView listarAluno;
 	private JPanel painel;
+	private int idAtividade;
 	
 	public JPanel getGerenteListarAlunosControl() throws SQLException{
 		listarAluno = new GerenteListarAlunosView();
 		painel=listarAluno.getGerenteListarAlunosView();
+		preencheTabela();
+		adicionaEventos();
+		return painel;
+	}
+	
+	public JPanel getGerenteListarAlunosControl(int idAtividade) throws SQLException{
+		this.idAtividade = idAtividade;
+		listarAluno = new GerenteListarAlunosView();
+		painel=listarAluno.getGerenteFazerMonitorView();
 		preencheTabela();
 		adicionaEventos();
 		return painel;
@@ -47,13 +57,12 @@ public class GerenteListarAlunosControl {
 		});
 		
 		listarAluno.getFazerMonitor().addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int id = Integer.parseInt(listarAluno.getTable()
 						.getValueAt(listarAluno.getTable().getSelectedRow(), 0).toString());
 				
-				new GerenteFazerMonitorControl().getGerenteFazerMonitorControl(id);
+				new GerenteFazerMonitorControl().getGerenteFazerMonitorControl(id, idAtividade);
 			}
 		});
 	}

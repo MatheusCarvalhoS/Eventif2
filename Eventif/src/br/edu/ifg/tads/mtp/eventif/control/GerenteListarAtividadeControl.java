@@ -2,10 +2,12 @@ package br.edu.ifg.tads.mtp.eventif.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -26,9 +28,9 @@ import br.edu.ifg.tads.mtp.eventif.view.GerenteListarEventoView;
 public class GerenteListarAtividadeControl {
 	private GerenteListarAtividadeView listarAtividade;
 	private JPanel painel;
-	private Action alterar;
-	private Action excluir;
-	private Action addAtividade;
+	private JButton alterar;
+	private JButton excluir;
+	private JButton addAtividade;
 	private AppView appView;
 	private int idEvento;
 
@@ -73,37 +75,26 @@ public class GerenteListarAtividadeControl {
 	}
 
 	public void adicionaEventos() {
-		/*
-		listarAtividade.getAddAtividade().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "add atividade");
-				int id = Integer.parseInt(listarAtividade.getTable()
-						.getValueAt(listarAtividade.getTable().getSelectedRow(), 0).toString());
-				
-				appView.getPainelDireita().removeAll();
-				appView.getPainelDireita().add(
-						new GerenteCriarAtividadeControl()
-								.getGerenteCriarAtividadeControl(id));
-				appView.getPainelDireita().repaint();
-			}
-		});
+		
+		
+		
 		
 		listarAtividade.getAlterarAtividade().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "alterar");
+				JOptionPane.showMessageDialog(null, "alterarAtividade");
 				int id = Integer.parseInt(listarAtividade.getTable()
 						.getValueAt(listarAtividade.getTable().getSelectedRow(), 0).toString());
-				
+				/*
 				appView.getPainelDireita().removeAll();
 				appView.getPainelDireita().add(
-						new GerenteCriarEventoControl()
-								.getGerenteAlterarEventoControl(id));
+						new GerenteCriarAtividadeControl()
+								.getGerenteAlterarAtividadeControl(id));
 				appView.getPainelDireita().repaint();
+				*/
 			}
 		});
-		*/
+		
 		listarAtividade.getJbtnPesquisar().addActionListener(new ActionListener() {
 
 			@Override
@@ -116,30 +107,96 @@ public class GerenteListarAtividadeControl {
 				listarAtividade.getTable().repaint();
 			}
 		});
+		
+		listarAtividade.getSelectMonitor().addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int idAtividade = Integer.parseInt(listarAtividade.getTable()
+						.getValueAt(listarAtividade.getTable().getSelectedRow(), 0).toString());
+				try {
+					appView.getPainelDireita().removeAll();
+					appView.getPainelDireita().add(new GerenteListarAlunosControl().getGerenteListarAlunosControl(idAtividade));
+					appView.getPainelDireita().repaint();
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "erro! "+e.getID());
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 	}
 
-	public Action getAlterar() {
+
+	public GerenteListarAtividadeView getListarAtividade() {
+		return listarAtividade;
+	}
+
+
+	public void setListarAtividade(GerenteListarAtividadeView listarAtividade) {
+		this.listarAtividade = listarAtividade;
+	}
+
+
+	public JPanel getPainel() {
+		return painel;
+	}
+
+
+	public void setPainel(JPanel painel) {
+		this.painel = painel;
+	}
+
+
+	public JButton getAlterar() {
 		return alterar;
 	}
 
-	public void setAlterar(Action alterar) {
+
+	public void setAlterar(JButton alterar) {
 		this.alterar = alterar;
 	}
 
-	public Action getExcluir() {
+
+	public JButton getExcluir() {
 		return excluir;
 	}
 
-	public void setExcluir(Action excluir) {
+
+	public void setExcluir(JButton excluir) {
 		this.excluir = excluir;
 	}
 
-	public Action getAddAtividade() {
+
+	public JButton getAddAtividade() {
 		return addAtividade;
 	}
 
-	public void setAddAtividade(Action addAtividade) {
+
+	public void setAddAtividade(JButton addAtividade) {
 		this.addAtividade = addAtividade;
 	}
+
+
+	public AppView getAppView() {
+		return appView;
+	}
+
+
+	public void setAppView(AppView appView) {
+		this.appView = appView;
+	}
+
+
+	public int getIdEvento() {
+		return idEvento;
+	}
+
+
+	public void setIdEvento(int idEvento) {
+		this.idEvento = idEvento;
+	}
+	
+	
 
 }

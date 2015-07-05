@@ -53,7 +53,7 @@ public class LoginControl {
 						login.getTfSenha().setText("");
 					}
 
-					if (text.equals("Gerente")) {
+					if (text.equals("Gerente") & validacao) {
 						gerente = new GerenteModel();
 						gerente.setCpf(cpf);
 						gerente.setSenha(senha);
@@ -74,7 +74,7 @@ public class LoginControl {
 								.add(new GerenteListarEventoControl()
 										.getGerenteListarEventoControl(appView));
 						appView.getPainelDireita().repaint();
-					} else if (text.equals("Monitor (a)")) {
+					} else if (text.equals("Monitor (a)") & validacao) {
 						monitor = new MonitorModel();
 						monitor.setCpf(cpf);
 						monitor.setSenha(senha);
