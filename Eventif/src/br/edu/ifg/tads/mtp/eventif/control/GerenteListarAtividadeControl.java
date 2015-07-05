@@ -38,26 +38,12 @@ public class GerenteListarAtividadeControl {
 
 		listarAtividade = new GerenteListarAtividadeView();
 		painel = listarAtividade.getGerenteListarAtividadeView();
-		
-		preencheTabela();
 		adicionaEventos();
-		adicionaListenner();
+		preencheTabela();
+		
 		return painel;
 	}
 
-	public void adicionaListenner() {
-		Dispatcher.getInstance().addListener(new Listener() {
-			@Override
-			public void receivedEvent(
-					br.edu.ifg.tads.mtp.eventif.util.Event event) {
-				if (event.getName().equals("excluir")
-						|| event.getName().equals("alterar")
-						|| event.getName().equals("nova atividade")) {
-					preencheTabela();
-				}
-			}
-		});
-	}
 
 	public void preencheTabela() {
 		Vector<Vector<String>> listaAtividade = new AtividadeDAO().buscaAtividades(idEvento);
@@ -87,9 +73,7 @@ public class GerenteListarAtividadeControl {
 	}
 
 	public void adicionaEventos() {
-		
-		
-		
+		/*
 		listarAtividade.getAddAtividade().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -119,33 +103,19 @@ public class GerenteListarAtividadeControl {
 				appView.getPainelDireita().repaint();
 			}
 		});
-		
+		*/
 		listarAtividade.getJbtnPesquisar().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				EnderecoModel endereco = new EnderecoModel();
-				EventoModel evento = new EventoModel();
-				JOptionPane.showMessageDialog(null, "Pesquisar aqui");
-
+				System.out.println("pesquisei");
+				listarAtividade.getTable().removeAll();
+				listarAtividade.getTable().setModel(new PesquisarEventoOuAtividadeControl().getPesquisarAtividadeControl(listarAtividade.getJtfPesquisar().getText(), idEvento));
+				
+				listarAtividade.getTable().getColumn("id").setMaxWidth(25);
+				listarAtividade.getTable().repaint();
 			}
 		});
-
-		Action addAtividade = new AbstractAction() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("entreiiiii");
-				int index = Integer.parseInt(e.getActionCommand());
-				int id = Integer.parseInt(listarAtividade.getTable()
-						.getValueAt(index, 0).toString());
-
-				appView.getPainelDireita().removeAll();
-				appView.getPainelDireita().add(
-						new GerenteCriarAtividadeControl()
-								.getGerenteCriarAtividadeControl(id));
-				appView.getPainelDireita().repaint();
-			}
-		};
 	}
 
 	public Action getAlterar() {

@@ -17,9 +17,7 @@ public class AlunoListarEventoView{
 	private JTextField jtfPesquisar;
 	private JTable table;
 	private JButton jbtnPesquisar;
-	/**
-	 * Create the frame.
-	 */
+	
 	public JPanel getAlunoListarEventoView() {
 		painel = new JPanel();
 		painel.setBounds(0, 0, 779, 624);
@@ -34,10 +32,6 @@ public class AlunoListarEventoView{
 		jbtnPesquisar = new JButton("Pesquisar");
 		jbtnPesquisar.setForeground(new Color(0, 0, 128));
 		jbtnPesquisar.setFont(new Font("HanziPen TC", Font.BOLD, 12));
-		jbtnPesquisar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		jbtnPesquisar.setBounds(530, 20, 117, 26);
 		
 		table = new JTable ();
@@ -51,7 +45,7 @@ public class AlunoListarEventoView{
 		painel.add(jScrollPane);
 		painel.add(jtfPesquisar);
 		painel.add(jbtnPesquisar);
-		//painel.setBackground(new Color(240, 240, 240));
+
 		return painel;
 	}
 

@@ -37,7 +37,7 @@ public class GerenteListarEventoControl {
 		
 		preencheTabela();
 		adicionaEventos();
-		adicionaListenner();
+		//adicionaListenner();
 		return painel;
 	}
 
@@ -83,7 +83,6 @@ public class GerenteListarEventoControl {
 	}
 
 	public void adicionaEventos() {
-		
 		listarEvento.getAddAtividade().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -127,33 +126,18 @@ public class GerenteListarEventoControl {
 			}
 		});
 		
-		
 		listarEvento.getJbtnPesquisar().addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				EnderecoModel endereco = new EnderecoModel();
-				EventoModel evento = new EventoModel();
-				JOptionPane.showMessageDialog(null, "Pesquisar aqui");
+				System.out.println("pesquisei evento");
+				listarEvento.getTable().removeAll();
+				listarEvento.getTable().setModel(new PesquisarEventoOuAtividadeControl().getPesquisarEventoControl(listarEvento.getJtfPesquisar().getText()));
 
+				listarEvento.getTable().getColumn("id").setMaxWidth(25);
+	
+				listarEvento.getTable().repaint();
 			}
 		});
-
-		Action addAtividade = new AbstractAction() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				int index = Integer.parseInt(e.getActionCommand());
-				int id = Integer.parseInt(listarEvento.getTable()
-						.getValueAt(index, 0).toString());
-
-				appView.getPainelDireita().removeAll();
-				appView.getPainelDireita().add(
-						new GerenteCriarAtividadeControl()
-								.getGerenteCriarAtividadeControl(id));
-				appView.getPainelDireita().repaint();
-			}
-		};
 	}
 
 	public Action getAlterar() {

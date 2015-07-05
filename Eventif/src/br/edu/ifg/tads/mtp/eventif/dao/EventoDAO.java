@@ -146,4 +146,62 @@ public class EventoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Vector<Vector<String>> pesquisarEvento(String nome){
+		try {
+			Vector<Vector<String>> listaEventos = new Vector<Vector<String>>();
+			PreparedStatement stmt = new ConnectionFactory()
+					.getConnection()
+					.prepareStatement(
+							"select * from evento where(nomeEvento like lower('"+nome+"%')) order by idEvento"); // o problema estava aqui, pois o like não retornava nada pelo fade de haver um espaço
+			
+			ResultSet result = stmt.executeQuery();
+			while(result.next()){
+				EventoModel evento = new EventoModel();
+				
+				evento.setIdEvento(result.getLong("idEvento"));
+				evento.setNome(result.getString("nomeEvento"));
+				evento.setDescricao(result.getString("descricaoEvento"));
+				Calendar dataInicio = Calendar.getInstance();
+				dataInicio.setTime(result.getDate("dataInicio"));
+				
+				evento.setDataInicio(dataInicio);
+				evento.setEmail(result.getString("email"));
+				
+				Calendar dataFim = Calendar.getInstance();
+				dataFim.setTime(result.getDate("dataEncerramento"));
+				
+				evento.setDataFim(dataFim);
+				
+				evento.setOrganizador(result.getString("organizador"));
+				evento.setTelefone(result.getString("telefoneContato"));
+				evento.setLocal(result.getString("localEvento"));
+				evento.setIdEndereco(result.getInt("idEndereco"));
+				
+				Vector<String> colunas = new Vector<String>();
+				colunas.add(""+evento.getIdEvento());
+				colunas.add(evento.getNome());
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				
+				colunas.add(sdf.format(evento.getDataInicio().getTime()));
+				
+				colunas.add(sdf.format(evento.getDataFim().getTime()));
+				colunas.add(evento.getEmail());
+				colunas.add(evento.getOrganizador());
+				colunas.add(evento.getTelefone());
+				colunas.add(evento.getLocal());
+				colunas.add(""+evento.getIdEndereco());
+				
+				listaEventos.add(colunas);
+			}
+			result.close();
+			stmt.close();
+			return listaEventos;
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao listar tabelas de Evento! " +e.getMessage());
+			throw new RuntimeException(e);
+		}
+	}
+	
 }

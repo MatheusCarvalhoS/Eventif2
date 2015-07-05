@@ -109,6 +109,57 @@ public class AtividadeDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	
+	public Vector<Vector<String>> pesquisaAtividade(String nome, int idEvento){
+		try {
+			Vector<Vector<String>> listaAtividades = new Vector<Vector<String>>();
+			PreparedStatement stmt = new ConnectionFactory()
+					.getConnection()
+					.prepareStatement(
+							"select * from atividade where(nomeAtividade like lower('"+nome+"%') and idEvento = ?) order by idAtividade");
+			
+			stmt.setInt(1, idEvento);
+			ResultSet result = stmt.executeQuery();
+			while(result.next()){
+				AtividadeModel atividade = new AtividadeModel();
+				atividade.setIdAtividade(result.getLong("idAtividade"));
+				atividade.setNomeAtividade(result.getString("nomeAtividade"));
+				atividade.setDescricaoAtividade(result.getString("descricaoAtividade"));
+				atividade.setHoraInicio(result.getString("horaInicio"));
+				atividade.setHoraEncerramento(result.getString("horaEncerramento"));
+				atividade.setPalestrante(result.getString("palestrante"));
+				atividade.setTipoAtividade(result.getString("tipoAtividade"));				
+				atividade.setCargaHoraria(result.getString("cargaHoraria"));
+				atividade.setNumeroVagas(result.getInt("numeroVagas"));
+				
+				
+				Calendar data = Calendar.getInstance(); // o erro está aqui, não consegue listar = null
+				data.setTime(result.getDate("data"));
+				atividade.setData(data);
+				
+				Vector<String> colunas = new Vector<String>();
+				colunas.add(""+atividade.getIdAtividade());
+				colunas.add(atividade.getNomeAtividade());
+				colunas.add(atividade.getDescricaoAtividade());
+				colunas.add(atividade.getHoraInicio());
+				colunas.add(atividade.getHoraEncerramento());
+				colunas.add(atividade.getPalestrante());
+				colunas.add(atividade.getTipoAtividade());
+				colunas.add(atividade.getCargaHoraria());
+				colunas.add(""+atividade.getNumeroVagas());
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				colunas.add(sdf.format(atividade.getData().getTime()));
+				
+				listaAtividades.add(colunas);
+			}
+			result.close();
+			stmt.close();
+			return listaAtividades;
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao listar tabelas de Atividade! " +e.getMessage());
+			throw new RuntimeException(e);
+		}
+	}
 	
 }

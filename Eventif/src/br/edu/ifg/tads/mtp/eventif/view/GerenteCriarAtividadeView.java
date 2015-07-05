@@ -5,10 +5,13 @@ import java.awt.TextField;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import br.edu.ifg.tads.mtp.eventif.util.FormatadorMascara;
 
 public class GerenteCriarAtividadeView {
 
@@ -55,9 +58,9 @@ public class GerenteCriarAtividadeView {
 
 		txNome = new JTextField();
 		txDescricaoAtividade = new JTextArea();
-		txData = new JTextField();
-		txHoraInicio = new JTextField();
-		txHoraFim = new JTextField();
+		txData = new JFormattedTextField(new FormatadorMascara().mascara("##/##/####"));
+		txHoraInicio = new JFormattedTextField(new FormatadorMascara().mascara("##:##"));
+		txHoraFim =new JFormattedTextField(new FormatadorMascara().mascara("##:##"));
 		txTipoAtividade = new JTextField();
 		txCargaHoraria = new JTextField();
 		txNumeroVagas = new JTextField();
