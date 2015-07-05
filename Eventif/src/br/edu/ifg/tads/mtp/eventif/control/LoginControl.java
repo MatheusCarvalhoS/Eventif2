@@ -91,6 +91,24 @@ public class LoginControl {
 
 						appView.getPainelDireita().repaint();
 						appView.getPainelEsquerda().repaint();
+					} else if (text.equals("Participante") & validacao) {
+						aluno = new AlunoModel();
+						aluno.setCpf(cpf);
+						aluno.setSenha(senha);
+						aluno.setIdAluno(1);
+
+						appView.getPainelEsquerda().removeAll();
+						appView.getPainelDireita().removeAll();
+
+						/*appView.getPainelEsquerda()
+								.add(new MenuPrincipalMonitorControl()
+										.getMenuPrincipalMonitorControl(appView));*/
+						appView.getPainelDireita()
+								.add(new AlunoListarEventoControl()
+										.getAlunoListarEventoControl(appView, aluno.getIdAluno()));
+
+						appView.getPainelDireita().repaint();
+						appView.getPainelEsquerda().repaint();
 					}
 				} else {
 					JOptionPane.showMessageDialog(null,

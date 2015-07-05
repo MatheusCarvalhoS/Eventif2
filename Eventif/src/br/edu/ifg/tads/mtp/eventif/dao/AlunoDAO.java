@@ -40,6 +40,115 @@ public class AlunoDAO {
 		return retorno;
 	}
 	
+	public boolean inscricaoEvento(int idAluno, int idEvento){
+		boolean retorno = true;
+		String sql = "insert into alunoEvento (idAluno, idEvento) values(?,?)";
+		Connection con = null;
+		try {
+			con = new ConnectionFactory().getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setInt(1, idAluno);
+			stmt.setInt(2, idEvento);
+
+			stmt.execute();
+		} catch (Exception e) {
+			retorno = false;
+		} finally {
+			try {
+				con.close();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null,
+						"Deu merda, não deu pra fechar");
+				retorno = false;
+			}
+		}
+		return retorno;
+	}
+	
+	public boolean sairDeAtividade(int idAluno, int idAtividade){
+		boolean retorno = true;
+		String sql = "delete from alunoEvento where idAluno=? and idAtividade=?";
+		Connection con = null;
+		try {
+			con = new ConnectionFactory().getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setInt(1, idAluno);
+			stmt.setInt(2, idAtividade);
+
+			stmt.execute();
+		} catch (Exception e) {
+			retorno = false;
+		} finally {
+			try {
+				con.close();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null,
+						"Deu merda, não deu pra fechar");
+				retorno = false;
+			}
+		}
+		return retorno;
+	} 
+
+	public boolean sairDoEvento(int idAluno, int idEvento){
+		boolean retorno = true;
+		String sql1 = "delete from alunoEvento where idAluno=? and idEvento=?";
+		String sql2 = "delete from alunoAtividade as art using atividade as atv where atv.idAtividade=art.idAtividade and idAluno=? and idEvento=?";
+		Connection con = null;
+		try {
+			con = new ConnectionFactory().getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			PreparedStatement stmt2 = con.prepareStatement(sql2);
+
+			stmt1.setInt(1, idAluno);
+			stmt1.setInt(2, idEvento);
+			stmt2.setInt(1, idAluno);
+			stmt2.setInt(2, idEvento);
+
+			stmt1.execute();
+			stmt2.execute();
+		} catch (Exception e) {
+			retorno = false;
+		} finally {
+			try {
+				con.close();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null,
+						"Deu merda, não deu pra fechar");
+				retorno = false;
+			}
+		}
+		return retorno;
+	}
+	
+	public boolean inscricaoAtividade(int idAluno, int idAtividade){
+		boolean retorno = true;
+		String sql = "insert into alunoAtividade (idAluno, idAtividade) values(?,?)";
+		Connection con = null;
+		try {
+			con = new ConnectionFactory().getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setInt(1, idAluno);
+			stmt.setInt(2, idAtividade);
+
+			stmt.execute();
+		} catch (Exception e) {
+			retorno = false;
+		} finally {
+			try {
+				con.close();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null,
+						"Deu merda, não deu pra fechar");
+				retorno = false;
+			}
+		}
+		return retorno;
+	}
+	
 	
 	public Vector<Vector<String>> buscaAlunos() throws SQLException{
 		try{
